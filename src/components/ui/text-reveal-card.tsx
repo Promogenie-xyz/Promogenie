@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState, memo } from "react";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
@@ -22,12 +21,21 @@ export const TextRevealCard = ({
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   useEffect(() => {
-    if (cardRef.current) {
-      const { left, width: localWidth } =
-        cardRef.current.getBoundingClientRect();
-      setLeft(left);
-      setLocalWidth(localWidth);
+    function updateDimensions() {
+      if (cardRef.current) {
+        const { left, width: localWidth } =
+          cardRef.current.getBoundingClientRect();
+        setLeft(left);
+        setLocalWidth(localWidth);
+      }
     }
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
   }, []);
 
   function mouseMoveHandler(event: any) {
@@ -56,7 +64,7 @@ export const TextRevealCard = ({
       onMouseMove={mouseMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[#1d1c20] border border-fuchsia-200/[0.1] w-[40rem] rounded-lg p-8 relative overflow-hidden",
+        "bg-[#1d1c20] border border-fuchsia-200/[0.1] w-full md:w-[40rem] rounded-lg p-8 relative overflow-hidden",
         className
       )}
     >
@@ -83,6 +91,7 @@ export const TextRevealCard = ({
           <p
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
+              whiteSpace: "nowrap", // Prevents text from wrapping
             }}
             className="text-base sm:text-[3rem] py-10 font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-fuchsia-200"
           >
