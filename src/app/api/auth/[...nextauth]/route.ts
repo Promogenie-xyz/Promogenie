@@ -5,7 +5,7 @@ import { Adapter } from "next-auth/adapters";
 import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google'
 
-export const handler:NextAuthOptions=NextAuth({
+ const handler =NextAuth({
     providers:[
         GoogleProvider({
             clientId: googleClientId ?? "",
