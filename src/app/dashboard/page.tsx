@@ -2,12 +2,23 @@
 
 import Navbar from "@/components/Navbar";
 import { googleClientId, googleClientSecret, supaSecret, supaUrl } from "@/lib/credential";
+import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const Page = () => {
     const {data: session} = useSession()
     const name = session?.user?.name
+    const email = session?.user?.email
+    useEffect(() => {
+      const func = async () => {
+     const response = await axios.post("https://marketing-7do1.onrender.com/register",{email})
+      console.log(response);
+      }
+      const timer = setTimeout(func, 1000)
+      return () => clearTimeout(timer)
+    },[email])
     
     if(!session) {
       redirect("/")
