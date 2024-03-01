@@ -3,7 +3,6 @@
 import SignIn from "./SignIn"
 import { SparklesCore } from "./ui/sparkles"
 
-
 const Headercomp = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-y-6">
@@ -27,10 +26,11 @@ const Headercomp = () => {
           <TextRevealCard text=" Gear Your Marketing. " revealText=" By using promogenie. "/>
         </div> */}
       <h1 className=" lg:text-5xl text-3xl text-center max-w-[70%] font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-fuchsia-200 italic">
-        "The only content and self marketing tool you ever need"
+       &quot;The only content and self marketing tool you ever need&quot;
       </h1>
       <SignIn />
     </div>
+
   )
 }
 
