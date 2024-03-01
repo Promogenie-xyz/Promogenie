@@ -16,7 +16,7 @@ const SignIn = () => {
             <div className="px-8 py-2  bg-black  rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent"
             onClick={() => signIn('google')}
             >
-              Sign up for the waitlist ==>
+              Sign up for the waitlist =={'>'}
             </div>
             </button>
         </div>

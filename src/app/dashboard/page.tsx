@@ -5,7 +5,7 @@ import { googleClientId, googleClientSecret, supaSecret, supaUrl } from "@/lib/c
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
-const page = () => {
+const Page = () => {
     const {data: session} = useSession()
     const name = session?.user?.name
     
@@ -31,4 +31,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
