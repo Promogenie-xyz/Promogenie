@@ -49,7 +49,7 @@ export const StickyScroll = ({
   ];
   return (
     <motion.div
-      className=" h-[30rem] no-scrollbar overflow-y-auto scrollba flex justify-center relative space-x-10 rounded-md p-10"
+      className=" h-[30rem]  no-scrollbar overflow-y-auto  flex justify-between relative space-x-10 rounded-md p-10"
       ref={ref}
     >
       <div className="div relative flex items-start px-4">
@@ -63,7 +63,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-2xl font-bold text-slate-100"
+                className="text-3xl lg:text-5xl font-extrabold text-fuchsia-300"
               >
                 {item.title}
               </motion.h2>
@@ -74,7 +74,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-kg text-slate-300 max-w-sm mt-10"
+                className="text-base lg:text-lg text-gray-500 font-semibold max-w-sm mt-10"
               >
                 {item.description}
               </motion.p>
@@ -88,7 +88,7 @@ export const StickyScroll = ({
           background: linearGradients[activeCard % linearGradients.length],
         }}
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
+          "hidden lg:block h-[20rem] w-[28rem] rounded-md bg-white sticky top-10 overflow-hidden",
           contentClassName
         )}
       >

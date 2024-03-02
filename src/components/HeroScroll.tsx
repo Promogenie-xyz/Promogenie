@@ -10,9 +10,9 @@ export function HeroScroll() {
       users={users}
       titleComponent={
         <>
-          <h1 className="text-2xl md:text-4xl lg:text-6xl mb-5 md:mb-7 font-semibold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-fuchsia-200 ">
+          <h1 className="text-center text-2xl md:text-4xl lg:text-6xl mb-5 md:mb-7 font-semibold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 via-gray-300 to-gray-500">
             Unleash the power of <br />
-            <span className="text-2xl md:text-4xl lg:text-8xl font-bold mt-6 leading-none">
+            <span className="text-center text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-fuchsia-500 to-fuchsia-300  text-2xl md:text-4xl lg:text-8xl font-bold mt-6 leading-none">
               PromoGenie.
             </span>
           </h1>
