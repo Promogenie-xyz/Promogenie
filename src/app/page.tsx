@@ -3,6 +3,7 @@ import Features from "@/components/Features";
 import Headercomp from "@/components/HeaderComp";
 import Navbar from "@/components/Navbar";
 import Pricing from "@/components/PricingComp";
+import Testimonials from "@/components/Testimonials";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
@@ -22,6 +23,7 @@ export default function Home() {
       </div>
       <Features/>
       <Pricing/>
+      <Testimonials/>
     </div>
   );
 }
