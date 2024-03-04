@@ -10,9 +10,9 @@ import { redirect } from "next/navigation";
 export default function Home() {
   const {data: session} = useSession()
 
-  if(session && session?.user) {
-    redirect("/dashboard")
-  }
+  // if(session && session?.user) {
+  //   redirect("/dashboard")
+  // }
   
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">

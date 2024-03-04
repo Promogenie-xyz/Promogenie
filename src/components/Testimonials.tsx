@@ -37,11 +37,11 @@ const data = [
 const Testimonials = () => {
   return (
     <div className="h-[40rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards
+      {/* <InfiniteMovingCards
         items={data}
         direction="right"
         speed="slow"
-      />
+      /> */}
     </div>
 
   )

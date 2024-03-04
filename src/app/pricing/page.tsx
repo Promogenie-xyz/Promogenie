@@ -56,7 +56,7 @@ const Pricing = () => {
         btnBeforeSession:'Sign Up',
         btnAfterSession:'Checkout Now',
         funcBeforeSession:signInwithGoogle,
-        funcAfterSession:handleClick,
+        funcAfterSession:handleClick2,
   
     },
     {
@@ -72,7 +72,7 @@ const Pricing = () => {
         btnBeforeSession:'Sign Up',
         btnAfterSession:'Checkout Now',
         funcBeforeSession:signInwithGoogle,
-        funcAfterSession:handleClick2,
+        funcAfterSession:handleClick,
     
     },
 
