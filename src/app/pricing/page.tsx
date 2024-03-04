@@ -65,7 +65,7 @@ const Pricing = () => {
         priceCategory:'Yearly',
         cost:'85',
         features:[
-            'Save 30% with an annual subscription.',
+            'Save 30% with this plan.',
             'Unlimited generations.',
             'Unlimited access to templates.',
         ],
