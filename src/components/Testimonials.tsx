@@ -20,28 +20,17 @@ const data = [
       name: "Edgar Allan Poe",
       title: "A Dream Within a Dream",
     },
-    {
-      quote:
-        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-      name: "Jane Austen",
-      title: "Pride and Prejudice",
-    },
-    {
-      quote:
-        "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-      name: "Herman Melville",
-      title: "Moby-Dick",
-    },
-    ];
+];
     
 const Testimonials = () => {
   return (
     <div className="h-[40rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
-      {/* <InfiniteMovingCards
+        <h1 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-fuchsia-200 mb-4">Our Testimonials</h1>
+       <InfiniteMovingCards
         items={data}
-        direction="right"
-        speed="slow"
-      /> */}
+         direction="left" 
+        speed="normal"
+      /> 
     </div>
 
   )

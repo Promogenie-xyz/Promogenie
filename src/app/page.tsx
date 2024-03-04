@@ -1,5 +1,6 @@
 'use client'
 import Features from "@/components/Features";
+import Footer from "@/components/Footer";
 import Headercomp from "@/components/HeaderComp";
 import Navbar from "@/components/Navbar";
 import Pricing from "@/components/PricingComp";
@@ -24,6 +25,7 @@ export default function Home() {
       <Features/>
       <Pricing/>
       <Testimonials/>
+      <Footer/>
     </div>
   );
 }
