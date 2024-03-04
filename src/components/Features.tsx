@@ -5,6 +5,22 @@ import { StickyScroll } from "./ui/sticky-scroll-reveal";
 
 const Features = () => {
     const content = [
+      {
+        title: "LinkedIn Posts",
+        description:
+        "Elevate your LinkedIn presence with our dynamic service. Our tailored approach generates compelling posts that captivate your audience and drive engagement. From eye-catching visuals to persuasive copy, we'll help you stand out in the crowded LinkedIn feed and attract valuable connections. Maximize your impact and unlock new opportunities with our innovative website promo solution. Try it now and watch your LinkedIn presence soar!",
+        content: (
+          <div className="h-full w-full  flex items-center justify-center text-white">
+             <Image
+              src="/Linkedin.png"
+              width={300}
+              height={300}
+              className="h-full w-full object-cover"
+              alt="linear board demo"
+            />
+          </div>
+        ),
+      },
         {
             title: "Cold Emails for refferals",
             description:
@@ -21,22 +37,6 @@ const Features = () => {
               </div>
             ),
           },
-        {
-          title: "LinkedIn Posts",
-          description:
-          "Elevate your LinkedIn presence with our dynamic service. Our tailored approach generates compelling posts that captivate your audience and drive engagement. From eye-catching visuals to persuasive copy, we'll help you stand out in the crowded LinkedIn feed and attract valuable connections. Maximize your impact and unlock new opportunities with our innovative website promo solution. Try it now and watch your LinkedIn presence soar!",
-          content: (
-            <div className="h-full w-full  flex items-center justify-center text-white">
-               <Image
-                src="/Linkedin.png"
-                width={300}
-                height={300}
-                className="h-full w-full object-cover"
-                alt="linear board demo"
-              />
-            </div>
-          ),
-        },
         {
           title: "Twitter Posts",
           description:

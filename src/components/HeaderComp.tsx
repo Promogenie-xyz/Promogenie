@@ -6,7 +6,7 @@ import { SparklesCore } from "./ui/sparkles"
 const Headercomp = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-y-6">
-      <div className="h-[12rem] px-[90px]  lg:px-[120px] xl:px-[200px] relative w-full bg-transparent flex flex-col items-center justify-center overflow-hidden rounded-3xl z-10">
+      <div className="h-[12rem] px-[80px] lg:px-[120px] xl:px-[200px] relative w-full bg-transparent flex flex-col items-center justify-center overflow-hidden rounded-3xl z-10">
         <h1 className="md:text-7xl text-5xl  lg:text-7xl font-bold text-center text-transparent relative z-20">
           <span className="bg-gradient-to-r from-fuchsia-700 via-fuchsia-500 to-fuchsia-300 text-transparent bg-clip-text relative z-20 position-relative">Gear Your Marketing</span>
         </h1>

@@ -91,7 +91,7 @@ const Pricing = () => {
 <div className="mt-12 grid sm:grid-cols-1 sm:px-16 lg:grid-cols-3 gap-8 lg:items-center">
 
     {data.map((item)=>(
-        <div key={item.id} className={` flex flex-col border-2 border-white text-center shadow-xl rounded-xl p-8 ${item.id === 2 ? 'scale-110':''} `} >
+        <div key={item.id} className={`flex flex-col border-2 border-white text-center shadow-xl rounded-xl p-8 ${item.id === 2 ? 'scale-110':''} `} >
         <p className="mb-3"><span className={`inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase  bg-blue-100  ${(item.heading === '-30% DISCOUNTED') ? 'text-green-600 font-extrabold':'text-blue-800 font-semibold'} `}>{item.heading}</span></p>
         <h4 className="font-medium text-lg  ">{item.priceCategory}</h4>
         <span className="mt-5 font-bold text-5xl  ">
