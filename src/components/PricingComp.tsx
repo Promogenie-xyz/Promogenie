@@ -3,6 +3,7 @@ import { usePremiumContext } from "@/components/IsPremium"
 import Navbar from "@/components/Navbar"
 import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { MdOutlineCheck } from "react-icons/md";
 
 
@@ -22,6 +23,10 @@ const Pricing = () => {
   const signInwithGoogle=()=>{
      signIn("google")
   }
+  const router=useRouter()
+  const toDashboard=()=>{
+    router.push('/dashboard')
+  }
   
   const {data: session} = useSession()
     const premium = usePremiumContext()
@@ -40,8 +45,7 @@ const Pricing = () => {
         btnBeforeSession:'Sign Up',
         btnAfterSession:'Head to dashboard',
         funcBeforeSession:signInwithGoogle,
-        linkTag:'/dashboard',
-
+        funcAfterSession:toDashboard
     },
     {
         id:2,
@@ -114,9 +118,8 @@ const Pricing = () => {
         {session ? (
             <button className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600" 
         onClick={item.funcAfterSession}
-        > <Link href={`${item.linkTag}`}>
+        > 
         {item.btnAfterSession}
-        </Link>
         </button>
         ) : (
             <button className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600" 
