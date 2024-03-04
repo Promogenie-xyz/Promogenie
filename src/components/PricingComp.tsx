@@ -84,14 +84,14 @@ const Pricing = () => {
     <div className="px-4 py-20  sm:px-6 mx-auto text-white">
 
 <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-  <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Pricing</h2>
-  <p className="mt-1">Whatever your status, our offers evolve according to your needs.</p>
+  <h2 className="text-2xl font-bold md:text-4xl md:leading-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-fuchsia-200">Pricing</h2>
+  <p className="mt-1 bg-clip-text text-transparent bg-gray-400">Whatever your status, our offers evolve according to your needs.</p>
 </div>
 
 <div className="mt-12 grid sm:grid-cols-1 sm:px-16 lg:grid-cols-3 gap-8 lg:items-center">
 
     {data.map((item)=>(
-        <div key={item.id} className={`flex flex-col border-2 border-white text-center shadow-xl rounded-xl p-8 ${item.id === 2 ? 'scale-110':''} `} >
+        <div key={item.id} className={`flex flex-col border-2 border-white text-center shadow-xl rounded-xl p-8 ${item.id === 2 ? 'lg:scale-110':''} `} >
         <p className="mb-3"><span className={`inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase  bg-blue-100  ${(item.heading === '-30% DISCOUNTED') ? 'text-green-600 font-extrabold':'text-blue-800 font-semibold'} `}>{item.heading}</span></p>
         <h4 className="font-medium text-lg  ">{item.priceCategory}</h4>
         <span className="mt-5 font-bold text-5xl  ">
