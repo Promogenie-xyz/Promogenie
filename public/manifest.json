@@ -5,22 +5,22 @@
   "description": "all in one marketing content platform for your business growth",
   "icons": [
     {
-      "src": "./vercel.svg",
+      "src": "./promogenie-high-resolution-logo.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "./vercel.svg",
+      "src": "./promogenie-high-resolution-logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-     "src": "./vercel.svg",
+     "src": "./promogenie-high-resolution-logo.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-     "src": "./vercel.svg",
+    "src": "./promogenie-high-resolution-logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
