@@ -7,6 +7,7 @@ import IsPremiumContextProvider from "@/components/IsPremium";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: "promogenie",
   description: "all in one marketing content platform for your business growth",
 };
