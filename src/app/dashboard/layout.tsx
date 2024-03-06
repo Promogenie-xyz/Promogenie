@@ -7,11 +7,11 @@ const DashboardLayout=async({
     children: React.ReactNode
   }) =>{
     return(
-        <div className="relative bg-black bg-grid-gray-100/[0.1] h-[100vh]">
-            <div className="hidden h-full md:flex md:w-72 md:flex-col md:fixed md:inset-y-0 bg-black">
+        <div className="relative bg-black bg-grid-gray-100/[0.1] h-full pb-10">
+            <div className="hidden h-full lg:flex md:w-72 md:flex-col md:fixed md:inset-y-0 bg-black">
                 <Sidebar/>
             </div>
-            <main>
+            <main className="flex justify-center items-center">
                 {/* <Navbar/> */}
                 {children}
             </main>
