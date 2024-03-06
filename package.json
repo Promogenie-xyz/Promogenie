@@ -11,6 +11,8 @@
   "dependencies": {
     "@auth/supabase-adapter": "^0.5.0",
     "@ducanh2912/next-pwa": "^10.2.5",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
     "@supabase/supabase-js": "^2.39.7",
     "@tsparticles/engine": "^3.3.0",
     "@tsparticles/react": "^3.0.0",
