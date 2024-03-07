@@ -27,6 +27,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.1.2",
     "next-auth": "^4.24.6",
+    "posthog-js": "^1.111.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
