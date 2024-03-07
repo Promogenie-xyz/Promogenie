@@ -9,8 +9,8 @@ interface Props{
 }
 
 if (typeof window !== 'undefined') {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "", {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  posthog.init(process.env.POSTHOG_KEY ?? "", {
+    api_host: process.env.POSTHOG_HOST,
   })
 }
 export function CSPostHogProvider({children}:Props) {
