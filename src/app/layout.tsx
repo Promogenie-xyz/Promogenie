@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import IsPremiumContextProvider from "@/components/IsPremium";
+import { CSPostHogProvider } from "@/components/Analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
+      <CSPostHogProvider>
       <body className={inter.className}>
         <Providers>
           <IsPremiumContextProvider>
@@ -29,6 +31,7 @@ export default function RootLayout({
           </IsPremiumContextProvider>
         </Providers>
       </body>
+      </CSPostHogProvider>
     </html>
   );
 }
