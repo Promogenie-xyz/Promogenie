@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-const page = () => {
+const Page = () => {
 
     const [memes, setMemes] = useState<any[]>([]);
 
@@ -18,19 +18,13 @@ const page = () => {
         };
 
         fetchData();
-    }, []);
+    }, [memes]);
 
     return (
         <div>
-            {memes.map((meme: any) => (
-                <div key={meme.id} className="flex flex-col items-center justify-center">
-                <div className="w-full flex flex-row">
-                    <img src={meme.url} alt="Hello"/>
-                </div>
-                </div>
-            ))}
+      
         </div>
     );
 }
 
-export default page;
+export default Page;

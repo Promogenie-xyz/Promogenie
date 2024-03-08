@@ -1,5 +1,6 @@
 'use client'
 
+import { NextUIProvider } from "@nextui-org/react"
 import { SessionProvider } from "next-auth/react"
 import { ReactNode } from "react"
 
@@ -11,7 +12,11 @@ interface Props{
 
 const Providers = ({children}:Props) => {
   return (
-    <SessionProvider>{children}</SessionProvider>
+    <SessionProvider>
+          <NextUIProvider>
+              {children}
+         </NextUIProvider>
+    </SessionProvider>
   )
 }
 

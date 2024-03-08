@@ -13,6 +13,7 @@ const Page = () => {
     const [mood,setMood]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
+    const [generations,setGenerations]=useState<string[]>([])
 
     const handleSubmit=()=>{
         try{
@@ -24,6 +25,7 @@ const Page = () => {
             console.log(err);
         }
     }
+    
     const router=useRouter()
   return (
     <div className="w-full h-screen flex flex-col items-center">
@@ -57,6 +59,12 @@ const Page = () => {
                 </div>
                 <Button variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> Submit </Button>
             </form>
+        </div>
+        <div>
+            {generations.length>0 ?(
+                <div>{generations.map((item,index)=>(
+                        <div key={index}></div>
+            ))}</div>):( <p className="  text-white">no searches yet</p> )}
         </div>
     </div>
   )
