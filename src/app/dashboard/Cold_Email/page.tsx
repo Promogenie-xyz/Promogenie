@@ -1,18 +1,9 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 const Page = () => {
   const [company,setCompany]=useState<string>('')
@@ -25,27 +16,41 @@ const Page = () => {
   const [generations,setGenerations]=useState<string[]>([])
   
   
-  console.log(role);
-  const roles=[
+  // console.log(role);
+  const roles = [
     {
-      id:1,
-      label:'Internship',
+        id: 1,
+        value: 'Internship', 
+        label: 'Internship',
     },
     {
-      id:2,
-      label:'Full-time',
+        id: 2,
+        value: 'Full-time', 
+        label: 'Full-time',
     },
     {
-      id:3,
-      label:'Contract-based'
+        id: 3,
+        value: 'Contract-based',
+        label: 'Contract-based'
     },
     {
-      id:4,
-      label:'Freelance'
+        id: 4,
+        value: 'Freelance',
+        label: 'Freelance'
     }
-  ]
+]
   const handleSubmit=()=>{
-    console.log(role);
+    try{
+      setCompany('')
+      setSenderName('')
+      setReceiverName('')
+      setWorkxp('')
+      setField('')
+      setTools('')
+      
+  }catch(err:any){
+      console.log(err);
+  }
     
   }
   return (
@@ -79,6 +84,15 @@ const Page = () => {
                 </div>
 
                 {/* select  */}
+                      <select
+                        className="rounded-lg p-2  bg-black hover:outline-none focus:outline-none text-gray-400"
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}>
+                        {roles.map((role) => (
+                            <option className="" value={role.value} key={role.id}>{role.label}</option>
+                        ))}
+                    </select>
+ 
                 <div className="flex flex-col gap-y-2">
                     <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={field} placeholder="Name of the position that you are applying for" onChange={(e)=>setField(e.target.value)} />
                 </div>
