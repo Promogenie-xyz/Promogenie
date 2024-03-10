@@ -1,13 +1,16 @@
 'use client'
 
+import { useStore } from "@/app/store/UseStore"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { redirect, useRouter } from "next/navigation"
 
 
 const SignIn = () => {
     const {data: session} = useSession()
-    const email = session?.user?.email
-    console.log(email);
+    // const userProfile=useStore(state=>state.user)
+    // console.log(session?.user)
+    // console.log(userProfile)
+    // const setUserProfile=useStore(state=>state.setUser)
     
     return(
         <div className="py-20 text-2xl max-sm:text-lg">

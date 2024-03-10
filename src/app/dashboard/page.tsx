@@ -10,8 +10,11 @@ import { FaArrowLeft, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa
 import { FaXTwitter } from "react-icons/fa6";
 import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
+import { useStore } from "../store/UseStore";
 
 const Page = () => {
+  // const userProfile=useStore(state=>state.user)
+  // console.log(userProfile)
   const routes=[
     {
         id:1,
@@ -44,16 +47,16 @@ const Page = () => {
         label:'Cold Email Generation',
         color:'text-[#c5221eff]',
         bgColor:'bg-[#c5221eff]/10'
-    },
-    {
+      },
+      {
         id:5,
         icon:<ImBlogger className="h-6 w-6"/>,
         href:'/dashboard/Blog_Page',
         label:'Blogs Creation',
         color:'text-[#f48c32ff]',
         bgColor:'bg-[#f48c32ff]/10',
-    },
-    {
+      },
+      {
         id:6,
         icon:<FaWhatsapp  className="h-6 w-6"/>,
         href:'/dashboard/Whatsapp_biz',
@@ -63,8 +66,6 @@ const Page = () => {
     },
 
 ]
-    const {data: session} = useSession()
-    const name = session?.user?.name
     
     // if(!session) {
       // redirect("/")

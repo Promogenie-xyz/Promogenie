@@ -1,14 +1,17 @@
 'use client'
+import { useStore } from "@/app/store/UseStore"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
-
+    // const userProfile=useStore(state=>state.user)
+    // console.log(userProfile)
     const [post,setPost]=useState<string>()
     const [prodDesc,setProdDesc]=useState<string>()
     const [length,setLength]=useState<string>()

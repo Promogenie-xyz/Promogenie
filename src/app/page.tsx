@@ -7,14 +7,12 @@ import Pricing from "@/components/PricingComp";
 import Testimonials from "@/components/Testimonials";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { useStore } from "./store/UseStore";
 
 export default function Home() {
-  const {data: session} = useSession()
-
-  // if(session && session?.user) {
-  //   redirect("/dashboard")
-  // }
-  
+  // const {data: session} = useSession()
+    // const userProfile=useStore(state=>state.user)
+    // console.log(userProfile)
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>
