@@ -11,10 +11,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
 import { useStore } from "../store/UseStore";
+import { useEffect } from "react";
 
 const Page = () => {
-  // const userProfile=useStore(state=>state.user)
-  // console.log(userProfile)
+  const {user}=useStore()
+  
+  console.log(user)
   const routes=[
     {
         id:1,

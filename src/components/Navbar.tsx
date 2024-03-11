@@ -16,16 +16,16 @@ const Navbar = () => {
     }
   }
   const {data: session} = useSession()
-    useEffect(() => {
-    if (session?.user) {
-      const { name, email, image } = session.user;
-      const loggedInUser: User = { 
-      name: name ?? 'Unknown',
-      email: email ?? 'Unknown',
-      image: image ?? 'Unknown' };
-      setUserProfile(loggedInUser);
-    }
-  }, [setUserProfile,session?.user]);
+  //   useEffect(() => {
+  //   if (session?.user) {
+  //     const { name, email, image } = session.user;
+  //     const loggedInUser: User = { 
+  //     name: name ?? 'Unknown',
+  //     email: email ?? 'Unknown',
+  //     image: image ?? 'Unknown' };
+  //     setUserProfile(loggedInUser);
+  //   }
+  // }, [setUserProfile,session?.user]);
   // if(userProfile){
     // console.log('tmkc');
     // console.log(userProfile)

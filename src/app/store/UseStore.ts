@@ -1,9 +1,9 @@
 import {create} from 'zustand'
 interface useStoreInterface{
-    user:User | null ,
-    setUser:(user:User | null)=>void
+    user:{} ,
+    setUser:(user:{})=>void
 }
 export const useStore=create<useStoreInterface>((set)=>({
-    user:{name:'',email:'',image:''},
+    user:{},
     setUser:(user)=>set({user})
 }))

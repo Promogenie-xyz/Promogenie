@@ -30,7 +30,7 @@ const Pricing = () => {
   
   const {data: session} = useSession()
     const premium = usePremiumContext()
-    console.log(premium)
+    // console.log(premium)
   const data=[
     {
         id:1,

@@ -1,7 +1,9 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import axios from "axios"
 import { ArrowLeft } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -15,8 +17,16 @@ const Page = () => {
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string[]>([])
 
-    const handleSubmit=()=>{
+    const session=useSession()
+    const userEmail=session.data?.user?.email
+    const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
+    console.log(userEmail,userPrompt)
+    const handleSubmit=async()=>{
         try{
+            const res= await axios.post('https://marketing-phi-seven.vercel.app/linkedin',{
+                email:userEmail,
+                prompt:userPrompt
+            })
             setPost('')
             setMood('')
             setLength('')
@@ -27,6 +37,7 @@ const Page = () => {
     }
     
     const router=useRouter()
+    
   return (
     <div className="w-full h-screen flex flex-col items-center">
         <div className="pt-20 flex items-center justify-center p-4 text-white">

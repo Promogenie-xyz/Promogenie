@@ -8,11 +8,19 @@ import Testimonials from "@/components/Testimonials";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useStore } from "./store/UseStore";
+import { useEffect } from "react";
 
 export default function Home() {
-  // const {data: session} = useSession()
-    // const userProfile=useStore(state=>state.user)
-    // console.log(userProfile)
+  const {user,setUser}=useStore()
+  const {data:session}=useSession()
+  // console.log(session?.user)
+  useEffect(() => {
+    if (session?.user) {
+      setUser(session?.user);
+    }
+  }, [setUser,session?.user]);
+  
+  console.log(user)
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>
