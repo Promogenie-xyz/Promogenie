@@ -20,7 +20,7 @@ const Page = () => {
     const session=useSession()
     const userEmail=session.data?.user?.email
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
-    console.log(userEmail,userPrompt)
+    // console.log(userEmail,userPrompt)
     const handleSubmit=async()=>{
         try{
             const res= await axios.post('https://marketing-phi-seven.vercel.app/linkedin',{

@@ -1,7 +1,9 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import axios from "axios"
 import { ArrowLeft } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -13,9 +15,16 @@ const Page = () => {
   const [length,setLength]=useState<string>()
   const [topic,setTopic]=useState<string>()
   const [generations,setGenerations]=useState<string[]>([])
-
-  const handleSubmit=()=>{
+  const session=useSession()
+  const userEmail=session.data?.user?.email
+  const userPrompt=`Generate me a Twitter post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
+//   console.log(userEmail,userPrompt)
+  const handleSubmit=async()=>{
     try{
+        const res=await axios.post('https://marketing-phi-seven.vercel.app/twitter',{
+            email:userEmail,
+            prompt:userPrompt
+        })
         setPost('')
         setMood('')
         setLength('')
