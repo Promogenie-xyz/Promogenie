@@ -1,6 +1,8 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import axios from "axios"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
@@ -14,8 +16,9 @@ const Page = () => {
   const [tools,setTools]=useState<string>('')
   const [role, setRole] = useState<string>('');
   const [generations,setGenerations]=useState<string[]>([])
-  
-  
+  const session=useSession()
+  const userEmail=session.data?.user?.email
+  const userPrompt=``
   // console.log(role);
   const roles = [
     {
@@ -39,8 +42,12 @@ const Page = () => {
         label: 'Freelance'
     }
 ]
-  const handleSubmit=()=>{
+  const handleSubmit=async()=>{
     try{
+        const res=await axios.post('https://marketing-phi-seven.vercel.app/email',{
+            email:userEmail,
+            prompt:userPrompt
+        })
       setCompany('')
       setSenderName('')
       setReceiverName('')
