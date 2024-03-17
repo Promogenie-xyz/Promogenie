@@ -86,3 +86,10 @@
       scrollbar-width: none;  /* Firefox */
 }
 }
+
+.glassy-background {
+  background-color: rgba(255, 255, 255, 0.15); /* Adjust opacity as needed */
+  backdrop-filter: blur(8px); /* Add blur effect for glassy look */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Optional: Add border for better visibility */
+}
+

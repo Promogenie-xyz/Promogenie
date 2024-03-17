@@ -16,11 +16,12 @@ const SignIn = () => {
         <div className="py-20 text-2xl max-sm:text-lg">
             <button className="p-[3px] relative">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+            <a href="https://cal.com/shobhnik13/15min" target="_blank">
             <div className="px-8 py-2  bg-black  rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent"
-            onClick={() => signIn('google')}
             >
-              Sign up for the waitlist =={'>'}
+              Schedule a call with the team for demo, pricing.
             </div>
+            </a>
             </button>
         </div>
     )
