@@ -84,7 +84,7 @@ const Pricing = () => {
 
 
   return (
-    <div className="bg-black bg-grid-gray-100/[0.1] pt-28">
+    <div className="bg-black bg-grid-gray-100/[0.1] pt-28" id="pricing">
     <div className="px-4 py-20  sm:px-6 mx-auto text-white">
 
 <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">

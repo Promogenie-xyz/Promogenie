@@ -119,7 +119,7 @@ const Features = () => {
           },
       ];
   return (
-    <div className="p-10">
+    <div className="p-10" id="features">
     <StickyScroll content={content} />
   </div>
   )
