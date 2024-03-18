@@ -14,13 +14,8 @@ export default function Home() {
   const {user,setUser}=useStore()
   const {data:session}=useSession()
   // console.log(session?.user)
-  useEffect(() => {
-    if (session?.user) {
-      setUser(session?.user);
-    }
-  }, [setUser,session?.user]);
-  
-  console.log(user)
+   
+ 
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>
