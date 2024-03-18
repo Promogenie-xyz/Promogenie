@@ -1,4 +1,5 @@
 'use client'
+import { myStore } from "@/app/store/MyStore"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
@@ -10,6 +11,9 @@ import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
+    const userProfile=myStore(state=>state.user)
+  
+  console.log(userProfile)
   const [post,setPost]=useState<string>()
   const [mood,setMood]=useState<string>()
   const [length,setLength]=useState<string>()

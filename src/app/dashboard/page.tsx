@@ -12,11 +12,13 @@ import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
 import { useStore } from "../store/UseStore";
 import { useEffect } from "react";
+import { myStore } from "../store/MyStore";
 
 const Page = () => {
-  const {user}=useStore()
+
+  const userProfile=myStore(state=>state.user)
   
-  console.log(user)
+  console.log(userProfile)
   const routes=[
     {
         id:1,
