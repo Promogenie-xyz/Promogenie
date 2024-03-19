@@ -7,13 +7,9 @@ import Pricing from "@/components/PricingComp";
 import Testimonials from "@/components/Testimonials";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { useStore } from "./store/UseStore";
 import { useEffect } from "react";
 
 export default function Home() {
-  const {user,setUser}=useStore()
-  const {data:session}=useSession()
-  // console.log(session?.user)
    
  
   return (

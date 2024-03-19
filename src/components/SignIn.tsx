@@ -1,6 +1,5 @@
 'use client'
 
-import { useStore } from "@/app/store/UseStore"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { redirect, useRouter } from "next/navigation"
 

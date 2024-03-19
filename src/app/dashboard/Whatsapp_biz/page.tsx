@@ -1,5 +1,4 @@
 'use client'
-import { useStore } from "@/app/store/UseStore"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"

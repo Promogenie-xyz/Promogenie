@@ -1,6 +1,5 @@
 'use client'
 
-import { useStore } from "@/app/store/UseStore"
 import { NextUIProvider } from "@nextui-org/react"
 import { SessionProvider } from "next-auth/react"
 import { ReactNode } from "react"

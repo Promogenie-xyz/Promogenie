@@ -10,7 +10,6 @@ import { FaArrowLeft, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa
 import { FaXTwitter } from "react-icons/fa6";
 import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
-import { useStore } from "../store/UseStore";
 import { useEffect } from "react";
 import { myStore } from "../store/MyStore";
 
