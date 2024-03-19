@@ -11,9 +11,9 @@ import { MdOutlineCheck } from "react-icons/md";
 
 const Pricing = () => {
 
-    const Yearly = "https://promogenie2.lemonsqueezy.com/checkout/buy/3b45b65a-1a75-4e48-b2cb-56450c05e71c"
+    const Yearly = "https://promogenie2.lemonsqueezy.com/buy/47e6a174-e7ed-4442-91a3-d17b912da47b"
 
-  const Monthly = "https://promogenie2.lemonsqueezy.com/checkout/buy/eabe00e6-3647-4584-beda-9bbbc3ca055e"
+  const Monthly = "https://promogenie2.lemonsqueezy.com/buy/72a4ef4b-30cf-4e7e-8d1c-2c8ca330b792"
 
   const handleClick = () => {
     window.location.replace(Yearly)

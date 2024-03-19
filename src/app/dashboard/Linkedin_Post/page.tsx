@@ -32,7 +32,7 @@ const Page = () => {
                 email:userEmail,
                 prompt:userPrompt
             })
-            console.log(res)
+            console.log(res.data)
             setPost('')
             setMood('')
             setLength('')
