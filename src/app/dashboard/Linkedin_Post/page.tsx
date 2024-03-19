@@ -18,20 +18,20 @@ const Page = () => {
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string[]>([])
 
-    // const session=useSession()
-    const userProfile=myStore(state=>state.user)
+    // const userProfile=myStore(state=>state.user)
     // console.log(userProfile)
-    const userEmail=userProfile.email
-    // console.log(userEmail)
+    const session=useSession()
+    const userEmail=session.data?.user?.email
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
+    // console.log(userEmail)
     // console.log(userEmail,userPrompt)
     const handleSubmit=async()=>{
         try{
-            const res= await axios.post('https://marketing-phi-seven.vercel.app/linkedin',{
+            const res= await axios.post('https://marketing-7do1.onrender.com/linkedin',{
                 email:userEmail,
                 prompt:userPrompt
             })
-            console.log(res.data)
+            console.log(res)
             setPost('')
             setMood('')
             setLength('')

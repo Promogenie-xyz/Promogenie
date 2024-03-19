@@ -20,12 +20,12 @@ const IsPremiumContextProvider = (props: Props) => {
         useEffect(() => {
 
             const checkIsRegistered = async () => {
-            await axios.post("https://marketing-phi-seven.vercel.app/register", {email})
+            await axios.post("https://marketing-7do1.onrender.com/register", {email})
             }
 
             const fetchPremium = async () => {
                 try {
-                const data = await axios.post(`https://marketing-phi-seven.vercel.app/check-customer`,{
+                const data = await axios.post(`https://marketing-7do1.onrender.com/check-customer`,{
                     email
                 },
                 {
