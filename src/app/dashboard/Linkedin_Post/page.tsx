@@ -1,4 +1,5 @@
 'use client'
+import { myStore } from "@/app/store/MyStore"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
@@ -17,8 +18,11 @@ const Page = () => {
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string[]>([])
 
-    const session=useSession()
-    const userEmail=session.data?.user?.email
+    // const session=useSession()
+    const userProfile=myStore(state=>state.user)
+    // console.log(userProfile)
+    const userEmail=userProfile.email
+    // console.log(userEmail)
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
     // console.log(userEmail,userPrompt)
     const handleSubmit=async()=>{
@@ -27,6 +31,7 @@ const Page = () => {
                 email:userEmail,
                 prompt:userPrompt
             })
+            console.log(res)
             setPost('')
             setMood('')
             setLength('')

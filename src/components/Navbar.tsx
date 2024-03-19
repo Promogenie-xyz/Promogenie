@@ -17,7 +17,7 @@ const Navbar = () => {
   const handleLogOut=async()=>{
     try{
       await signOut()
-      redirect('/')
+      router.push('/')
     }catch(err:any){
       console.log('error logging out');
     }
@@ -26,7 +26,7 @@ const Navbar = () => {
   const userProfile=myStore(state=>state.user)
   const handleSignIn = async () => {
     try {
-      await signIn('google');
+      await signIn('google')
       setIsOpen(false);
     } catch (err: any) {
       console.log(err);
@@ -38,13 +38,20 @@ const Navbar = () => {
     const getUser=()=>{
       if(session?.user){
         setUserProfile(session.user)
+        // redirect('/dashboard')
       }
+    
       // console.log(userProfile)
+      // redirect('/dashboard')
     }
     getUser()
   },[session])
-  console.log(userProfile)
+  // console.log(userProfile)
+  
   // console.log(session?.user)
+  const toDashboard=()=>{
+    router.push('/dashboard')
+  }
   return (
     <div className="">
       {/* Desktop navigation */}
@@ -74,7 +81,10 @@ const Navbar = () => {
           ) : (
             <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
           )}
-          <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button>
+            {
+              status ==="authenticated" ?<Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium' onClick={toDashboard}>Try free</Button> : <a href="#pricing"><Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button></a> 
+            }
+         
         </div>
       </div>}
 
@@ -108,7 +118,9 @@ const Navbar = () => {
             ) : (
               <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
             )}
-            <Button className="text-lg " variant='premium'>Try free</Button>
+            {
+              status ==="authenticated" ?<a href="/dashboard"><Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button></a> : <a href="#pricing"><Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button></a> 
+            }
           </div>
         )}
       </div>}

@@ -16,9 +16,9 @@ import { myStore } from "../store/MyStore";
 
 const Page = () => {
 
-  const userProfile=myStore(state=>state.user)
+  const router=useRouter()
   
-  console.log(userProfile)
+  // console.log(userProfile)
   const routes=[
     {
         id:1,
@@ -75,7 +75,7 @@ const Page = () => {
       // redirect("/")
     // }
   
-    const router=useRouter()
+  
   return (
     <div className="pt-12 ">
 

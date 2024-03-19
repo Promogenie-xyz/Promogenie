@@ -13,14 +13,13 @@ import { FaArrowLeft } from "react-icons/fa"
 const Page = () => {
     const userProfile=myStore(state=>state.user)
   
-  console.log(userProfile)
+//   console.log(userProfile)
   const [post,setPost]=useState<string>()
   const [mood,setMood]=useState<string>()
   const [length,setLength]=useState<string>()
   const [topic,setTopic]=useState<string>()
   const [generations,setGenerations]=useState<string[]>([])
-  const session=useSession()
-  const userEmail=session.data?.user?.email
+  const userEmail=userProfile.email
   const userPrompt=`Generate me a Twitter post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
 //   console.log(userEmail,userPrompt)
   const handleSubmit=async()=>{
@@ -29,6 +28,7 @@ const Page = () => {
             email:userEmail,
             prompt:userPrompt
         })
+        console.log(res.data)
         setPost('')
         setMood('')
         setLength('')

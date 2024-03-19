@@ -1,9 +1,11 @@
 'use client'
+import { myStore } from "@/app/store/MyStore"
 import { usePremiumContext } from "@/components/IsPremium"
 import Navbar from "@/components/Navbar"
 import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { MdOutlineCheck } from "react-icons/md";
 
 
@@ -22,13 +24,25 @@ const Pricing = () => {
   }
   const signInwithGoogle=()=>{
      signIn("google")
+    //  redirect('/dashboard')
   }
+  const userProfile=myStore(state=>state.user)
+  const setUserProfile=myStore(state=>state.setUser)
+  const {data: session} = useSession()
+  useEffect(()=>{
+    const getUser=()=>{
+      if(session?.user){
+        setUserProfile(session.user)
+      }
+    }
+    getUser()
+  },[session])
+  console.log(userProfile)
   const router=useRouter()
   const toDashboard=()=>{
     router.push('/dashboard')
   }
   
-  const {data: session} = useSession()
     const premium = usePremiumContext()
     // console.log(premium)
   const data=[
