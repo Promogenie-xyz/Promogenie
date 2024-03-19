@@ -5,6 +5,7 @@ import Providers from "@/components/Providers";
 import IsPremiumContextProvider from "@/components/IsPremium";
 import { CSPostHogProvider } from "@/components/Analytics";
 import { Analytics } from '@vercel/analytics/react';
+import ProModalProvider from "@/components/pro-modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <IsPremiumContextProvider>
+            <ProModalProvider/>
           {children}
           <Analytics />
           </IsPremiumContextProvider>
