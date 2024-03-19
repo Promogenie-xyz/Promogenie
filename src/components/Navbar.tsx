@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <div className="">
       {/* Desktop navigation */}
-      {!pathname.includes('/dashboard') && <div className="glassy-background sticky hidden md:flex justify-between items-center p-5 mx-4 mt-4 rounded-full">
+      {!pathname.includes('/dashboard') && <div className="glassy-background sticky hidden lg:flex justify-between items-center p-5 mx-4 mt-4 rounded-full">
         {/* Navigation links */}
         <div className="flex text-gray-400 text-lg font-normal justify-between items-center gap-x-8">
           <a href="#features">
@@ -89,7 +89,7 @@ const Navbar = () => {
       </div>}
 
       {/* Mobile navigation */}
-     {!pathname.includes('/dashboard') && <div className="visible md:hidden">
+     {!pathname.includes('/dashboard') && <div className="visible lg:hidden">
         <div className="flex justify-between items-center md:hidden z-10 glassy-background mx-4 mt-4 p-5 rounded-full">
           <a href="/">
             <div className="text-xl font-extrabold bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 text-transparent bg-clip-text">
@@ -119,7 +119,7 @@ const Navbar = () => {
               <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
             )}
             {
-              status ==="authenticated" ?<a href="/dashboard"><Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button></a> : <a href="#pricing"><Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button></a> 
+              status ==="authenticated" ?<a href="/dashboard"><Button className="text-lg " variant='premium'>Try free</Button></a> : <a href="#pricing"><Button className="text-lg " variant='premium'>Try free</Button></a> 
             }
           </div>
         )}
@@ -127,7 +127,7 @@ const Navbar = () => {
 
       {/* for dashboard  */}
       {pathname ==='/dashboard' && (<div className="flex bg-black p-4 justify-between items-center">
-                <p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p>
+                <a href="/"><p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p></a>
                 <div className="hidden lg:flex"></div>
                 <Button onClick={handleLogOut}>Log Out</Button>
         </div>)}
