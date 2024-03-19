@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import React, { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
@@ -25,7 +25,8 @@ const Page = () => {
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
     // console.log(userEmail)
     // console.log(userEmail,userPrompt)
-    const handleSubmit=async()=>{
+    const handleSubmit=async(event: React.FormEvent)=>{
+        event.preventDefault()
         try{
             const res= await axios.post('https://marketing-7do1.onrender.com/linkedin',{
                 email:userEmail,
