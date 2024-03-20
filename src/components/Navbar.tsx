@@ -132,10 +132,9 @@ const Navbar = () => {
       </div>}
 
       {/* for dashboard  */}
-      {pathname ==='/dashboard' && (<div className="flex bg-black p-4 justify-between items-center">
+      {pathname ==='/dashboard' && (<div className="flex lg:hidden bg-black p-8  justify-between items-center">
                 <a href="/"><p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p></a>
-                <div className="hidden lg:flex"></div>
-                <Button onClick={handleLogOut}>Log Out</Button>
+            
         </div>)}
     </div>
   );

@@ -12,6 +12,7 @@ import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
 import { useEffect } from "react";
 import { myStore } from "../store/MyStore";
+import { IoSettingsSharp } from "react-icons/io5";
 
 const Page = () => {
 
@@ -67,7 +68,6 @@ const Page = () => {
         color:'text-[#2ab13fff]',
         bgColor:'bg-[#2ab13fff]/10'
     },
-
 ]
     
     // if(!session) {
@@ -93,7 +93,7 @@ const Page = () => {
       <div className="px-4 md:px-20 lg:px-32 space-y-4 w-full">
           {routes.map((item)=>{
             return(
-              <Card onClick={()=>router.push(item.href)} key={item.href} className="hover:scale-90 lg:w-[150%] p-4 border-black/5 bg-black  flex items-center justify-between hover:shadow-md transition cursor-pointer">
+              <Card onClick={()=>router.push(item.href)} key={item.href} className={`${item.href === '/dashboard/Settings'?'lg:hidden':''}hover:scale-90 lg:w-[150%] p-4 border-black/5 bg-black  flex  items-center justify-between hover:shadow-md transition cursor-pointer`}>
                     {/* div for logo/icon and title  */}
                   <div className="flex items-center gap-x-4">
                     {/* div for icon/logo ->1 */}
@@ -111,6 +111,23 @@ const Page = () => {
             )
           })}
       </div>
+      {/* <div className="flex lg:hidden px-4 md:px-20 space-y-4 w-full"> */}
+      <Card onClick={()=>router.push('/dashboard/Settings')}  className={`hover:scale-90 mx-4 md:mx-20 lg:hidden mt-4 p-4 border-black/5 bg-black  flex  items-center justify-between hover:shadow-md transition cursor-pointer`}>
+                    {/* div for logo/icon and title  */}
+                  <div className="flex items-center gap-x-4">
+                    {/* div for icon/logo ->1 */}
+                    <div className={cn("p-4 w-fit rounded-md text-[#ef4444]")}>
+                        {/* <item.icon className={cn("w-8 h-8",item.color)}/> */}
+                        <IoSettingsSharp className="w-6 h-6"/> 
+                    </div>
+                    {/* div for title -> 2 */}
+                    <div className={`font-semibold text-gray-600`}>
+                    Go to Settings
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-500"/>
+              </Card>
+      {/* </div> */}
 
       </div>
   )

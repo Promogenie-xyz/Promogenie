@@ -47,7 +47,7 @@ const Page = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center">
         <div className="pt-20 flex items-center justify-center p-4 text-white">
-            <Link href='/dashboard'>
+            <Link href='/dashboard' className="lg:hidden">
             <FaArrowLeft className="hover:cursor-pointer w-6 h-6 lg:hidden mb-10 text-gray-400" />
             </Link>
             <Heading

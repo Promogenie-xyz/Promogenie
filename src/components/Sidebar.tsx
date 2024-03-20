@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "./ui/cn";
 import FreeCounter from "./FreeCounter";
+import { IoSettingsSharp } from "react-icons/io5";
 const Sidebar = () => {
     const routes=[
         {
@@ -58,12 +59,19 @@ const Sidebar = () => {
             label:'WhatsApp Business',
             color:'text-[#2ab13fff]'
         },
+        {
+            id:9,
+            icon:<IoSettingsSharp className="w-6 h-6"/>,
+            href:'/dashboard/Settings',
+            label:'Go to Settings',
+            color:'text-[#ef4444]'
+        }
 
     ]
     const pathname=usePathname()
   return (
-    <div className="space-y-4 flex flex-col  justify-center p-6 h-full">
-        <div className="space-y-1 flex flex-col gap-y-2">
+    <div className="space-y-3 flex flex-col  justify-center p-6 h-full">
+        <div className=" flex flex-col gap-y-2">
             {routes.map((item)=>(
                 <Link href={item.href} key={item.href} className={cn('text-sm group flex items-center p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition',pathname === item.href?'text-white bg-white/10':'text-gray-400')}>
                     <div className="flex gap-x-2 items-center">
