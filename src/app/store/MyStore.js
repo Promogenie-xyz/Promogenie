@@ -3,9 +3,11 @@ import  {create} from 'zustand';
 export const myStore = create((set) => ({
     user:{},
     setUser: (user) => set({user}),
+    premium:false,
+    isPremium:(premium)=>set({premium})
 }));
 export const ProModalStore=create((set)=>({
     isOpen:false,
     onOpen:()=>set({isOpen:true}),
-    onClose:()=>set({isOpen:false})
+    onClose:()=>set({isOpen:false}),
 }))

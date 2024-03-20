@@ -66,8 +66,9 @@ const tools=[
         }
     }
   return (
-   <Dialog open={proStoreStates.isOpen} onOpenChange={proStoreStates.onClose}>
-      <DialogContent className="bg-black ">
+    <div className="">
+   <Dialog open={proStoreStates.isOpen}  onOpenChange={proStoreStates.onClose}>
+      <DialogContent className="bg-black w-[90%] md:w-full rounded-lg">
         {/* dialog content contains a dialog header/footer  */}
         <DialogHeader>
           {/* dialog header contains a dilogtite and dilog desc  */}
@@ -93,18 +94,19 @@ const tools=[
                      ))}
             </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="flex items-center gap-x-5">
-          <Button onClick={handleClick2} variant="premium" className="text-white w-full" size="lg">
+        <DialogFooter className="flex items-center gap-x-5 gap-y-2">
+          <Button onClick={handleClick2} variant="premium" className="text-white w-full">
             Choose Monthly
             <Zap className="fill-white w-4 h-4 ml-2 border-none"/>
           </Button>
-          <Button onClick={handleClick} variant="premium" className="text-white w-full" size="lg">
+          <Button onClick={handleClick} variant="premium" className="text-white w-full" >
             Choose Yearly
             <Zap className="fill-white w-4 h-4 ml-2 border-none"/>
           </Button>
         </DialogFooter>
       </DialogContent>
    </Dialog>
+   </div>
   )
 }
 

@@ -1,4 +1,5 @@
 'use client'
+import { myStore } from "@/app/store/MyStore";
 import axios from "axios"
 import { useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState, ReactNode } from "react"
@@ -15,8 +16,9 @@ const IsPremiumContextProvider = (props: Props) => {
 
     const {data: session} = useSession()
     const email = session?.user?.email
-    const [premium, setPremium] = useState<boolean>(false)
-
+    // const [premium, setPremium] = useState<boolean>(false)
+    const premiumMember=myStore(state=>state.premium)
+    const setPremiumMember=myStore(state=>state.setPremium)
         useEffect(() => {
 
             const checkIsRegistered = async () => {
@@ -33,9 +35,9 @@ const IsPremiumContextProvider = (props: Props) => {
                   } )  
                 if(data.data.status === "subscribed") {
                     // console.log(data);
-                    setPremium(true)
+                    setPremiumMember(true)
                 } else {
-                    setPremium(false)
+                    setPremiumMember(false)
                 }             
                 } catch (error) {
                     console.log(error)
@@ -53,7 +55,7 @@ const IsPremiumContextProvider = (props: Props) => {
         }, [email])
 
     return (
-        <PremiumContext.Provider value={premium}>
+        <PremiumContext.Provider value={premiumMember}>
            {props.children}
         </PremiumContext.Provider>
     );
