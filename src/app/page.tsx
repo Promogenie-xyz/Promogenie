@@ -10,7 +10,10 @@ import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
-   
+  const {data:session}=useSession()
+  if(session) {
+    redirect('/dashboard')
+  }   
  
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">
