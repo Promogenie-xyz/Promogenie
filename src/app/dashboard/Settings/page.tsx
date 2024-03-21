@@ -7,10 +7,9 @@ import { Button } from "@/components/ui/button"
 import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import { useRouter } from "next/router"
 import { FaArrowLeft } from "react-icons/fa"
 
-const page = () => {
+const Page = () => {
     const premiumMember=myStore(state=>state.premium)
     const proModalStates=ProModalStore()
     const {data: session} = useSession()
@@ -41,4 +40,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
