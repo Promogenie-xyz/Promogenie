@@ -34,10 +34,10 @@ const IsPremiumContextProvider = (props: Props) => {
                     withCredentials: false,
                   } )  
                 if(data.data.status === "subscribed") {
-                    console.log(data);
-                    setPremium(true)
+                    // console.log(data);
+                    setPremiumMember(true)
                 } else {
-                    setPremium(false)
+                    setPremiumMember(false)
                 }             
                 } catch (error) {
                     console.log(error)

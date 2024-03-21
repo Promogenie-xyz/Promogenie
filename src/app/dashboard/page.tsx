@@ -69,10 +69,10 @@ const Page = () => {
         bgColor:'bg-[#2ab13fff]/10'
     },
 ]
-    
-    // if(!session) {
-      // redirect("/")
-    // }
+    const {data:session}=useSession()
+    if(!session) {
+      redirect("/")
+    }
   
   
   return (
