@@ -16,7 +16,7 @@ const IsPremiumContextProvider = (props: Props) => {
 
     const {data: session} = useSession()
     const email = session?.user?.email
-    // const [premium, setPremium] = useState<boolean>(false)
+    const [premium, setPremium] = useState<boolean>(false)
     const premiumMember=myStore(state=>state.premium)
     const setPremiumMember=myStore(state=>state.setPremium)
         useEffect(() => {
@@ -34,10 +34,10 @@ const IsPremiumContextProvider = (props: Props) => {
                     withCredentials: false,
                   } )  
                 if(data.data.status === "subscribed") {
-                    // console.log(data);
-                    setPremiumMember(true)
+                    console.log(data);
+                    setPremium(true)
                 } else {
-                    setPremiumMember(false)
+                    setPremium(false)
                 }             
                 } catch (error) {
                     console.log(error)
@@ -55,7 +55,7 @@ const IsPremiumContextProvider = (props: Props) => {
         }, [email])
 
     return (
-        <PremiumContext.Provider value={premiumMember}>
+        <PremiumContext.Provider value={premium}>
            {props.children}
         </PremiumContext.Provider>
     );

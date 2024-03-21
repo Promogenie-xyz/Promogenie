@@ -43,7 +43,7 @@ const tools=[
   const ProModalUi = () => {
     const Yearly = "https://promogenie2.lemonsqueezy.com/buy/47e6a174-e7ed-4442-91a3-d17b912da47b"
 
-    const Monthly = "https://promogenie2.lemonsqueezy.com/buy/72a4ef4b-30cf-4e7e-8d1c-2c8ca330b792"
+    const Monthly = "https://promogenie2.lemonsqueezy.com/checkout/buy/eabe00e6-3647-4584-beda-9bbbc3ca055e"
     const handleClick = () => {
         window.location.replace(Yearly)
       }
