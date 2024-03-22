@@ -1,5 +1,6 @@
 import { googleClientId, googleClientSecret, supaSecret, supaUrl } from "@/lib/credential";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
+import { NextAuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
 import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google'

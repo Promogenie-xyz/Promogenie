@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "all in one marketing content platform for your business growth",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
