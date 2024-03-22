@@ -19,6 +19,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         premium: "bg-gradient-to-r from-fuchsia-700 via-fuchsia-500 to-fuchsia-300 text-white-border-0",
+        generateCompButton:"hover:scale-95 transition-all ease-in-out duration-75 gap-x-1 bg-transparent text-gray-400 text-xs flex items-center border border-input"
       },
       size: {
         default: "h-10 px-4 py-2",

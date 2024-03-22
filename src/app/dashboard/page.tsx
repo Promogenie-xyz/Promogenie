@@ -69,12 +69,12 @@ const Page = () => {
         bgColor:'bg-[#2ab13fff]/10'
     },
 ]
-    const {data:session}=useSession()
-    if(!session) {
-      redirect("/")
-    }
+    // const {data:session}=useSession()
+    // if(!session) {
+    //   redirect("/")
+    // }
   
-  
+
   return (
     <div className="pt-12 ">
 

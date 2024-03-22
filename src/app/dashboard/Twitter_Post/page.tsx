@@ -1,5 +1,5 @@
 'use client'
-import { myStore } from "@/app/store/MyStore"
+import { DataStore, myStore } from "@/app/store/MyStore"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
@@ -37,7 +37,6 @@ const Page = () => {
         console.log(err);
     }
 }
-
 const router=useRouter()
 
   return (

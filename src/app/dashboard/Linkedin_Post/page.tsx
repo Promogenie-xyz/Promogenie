@@ -1,5 +1,6 @@
 'use client'
-import { myStore } from "@/app/store/MyStore"
+import { DataStore, myStore } from "@/app/store/MyStore"
+import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
@@ -16,13 +17,13 @@ const Page = () => {
     const [mood,setMood]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
-    const [generations,setGenerations]=useState<string[]>([])
+    const [generations,setGenerations]=useState<string>('')
 
     // const userProfile=myStore(state=>state.user)
     // console.log(userProfile)
     const session=useSession()
     const userEmail=session.data?.user?.email
-    const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
+    const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of atleast length of ${length} words.`
     // console.log(userEmail)
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{
@@ -33,6 +34,8 @@ const Page = () => {
                 prompt:userPrompt
             })
             console.log(res.data)
+
+            setGenerations(res.data.response)
             setPost('')
             setMood('')
             setLength('')
@@ -45,7 +48,7 @@ const Page = () => {
     const router=useRouter()
     
   return (
-    <div className="w-full h-screen flex flex-col items-center">
+    <div className={`w-full h-full flex flex-col items-center`}>
         <div className="pt-20 flex items-center justify-center p-4 text-white">
             <Link href='/dashboard' className="lg:hidden">
             <FaArrowLeft className="hover:cursor-pointer w-6 h-6 lg:hidden mb-10 text-gray-400" />
@@ -77,11 +80,8 @@ const Page = () => {
                 <Button variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> Submit </Button>
             </form>
         </div>
-        <div>
-            {generations.length>0 ?(
-                <div>{generations.map((item,index)=>(
-                        <div key={index}></div>
-            ))}</div>):( <p className="  text-white">no searches yet</p> )}
+        <div className="w-[80%] ml-[15rem] overflow-x-hidden mt-24 ">
+          {generations.length>1 && <GenerationComp data={generations} bgColor='bg-[#0077b5]/10' borderColor='border-[#0077b5]/10' />}
         </div>
     </div>
   )

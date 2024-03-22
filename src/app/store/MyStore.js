@@ -11,3 +11,8 @@ export const ProModalStore=create((set)=>({
     onOpen:()=>set({isOpen:true}),
     onClose:()=>set({isOpen:false}),
 }))
+
+export const DataStore=create((set)=>({
+    linkedin:'',
+    setLinkedin:(linkedin)=>set({linkedin})
+}))
