@@ -17,8 +17,8 @@ const IsPremiumContextProvider = (props: Props) => {
     const {data: session} = useSession()
     const email = session?.user?.email
     const [premium, setPremium] = useState<boolean>(false)
-    const premiumMember=myStore(state=>state.premium)
-    const setPremiumMember=myStore(state=>state.setPremium)
+    // const premiumMember=myStore(state=>state.premium)
+    // const setPremiumMember=myStore(state=>state.setPremium)
         useEffect(() => {
 
             const checkIsRegistered = async () => {
@@ -35,16 +35,16 @@ const IsPremiumContextProvider = (props: Props) => {
                   } )  
                 if(data.data.status === "subscribed") {
                     // console.log(data);
-                    setPremiumMember(true)
+                    setPremium(true)
                 } else {
-                    setPremiumMember(false)
+                    setPremium(false)
                 }             
                 } catch (error) {
                     console.log(error)
                 }
             }
     
-            const delay = 1000; //  in milliseconds
+            const delay = 500; //  in milliseconds
             const timeoutId = setTimeout(() => {
               checkIsRegistered()
               fetchPremium();
