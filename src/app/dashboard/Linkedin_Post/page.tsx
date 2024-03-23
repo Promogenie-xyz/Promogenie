@@ -53,7 +53,7 @@ const Page = () => {
     const router=useRouter()
   
   return (
-    <div className={`w-full h-full flex flex-col items-center bg-black bg-grid-gray-100/[0.1]` }>
+    <div className={`w-full ${generations.length>0 ?'h-full':'h-screen'} flex flex-col items-center overflow-x-hidden bg-black bg-grid-gray-100/[0.1]` }>
       
         <div className="pt-20 flex items-center justify-center p-4 text-white">
             <Link href='/dashboard' className="lg:hidden">
@@ -83,10 +83,10 @@ const Page = () => {
                 <div className="flex flex-col gap-y-2">
                     <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={length} placeholder="Length in words" onChange={(e)=>setLength(e.target.value)} />
                 </div>
-                <Button disabled={isLoading || (!post || !mood ||!length ||!topic)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin mr-1"/></>):(<>Submit</>)} </Button>
+                <Button disabled={isLoading || (!post || !mood ||!length ||!topic)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin ml-1"/></>):(<>Submit</>)} </Button>
             </form>
         </div>
-        <div className="w-[80%] ml-[15rem] overflow-x-hidden mt-24 ">
+        <div className=" w-[80%] lg:ml-[15rem] overflow-x-hidden mt-24 ">
           {generations && generations.length > 0 && <GenerationComp data={generations} bgColor='bg-[#0077b5]/10' borderColor='border-[#0077b5]/10' />}
         </div>
     </div>
