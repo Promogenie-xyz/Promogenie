@@ -5,11 +5,11 @@ import Headercomp from "@/components/HeaderComp";
 import Navbar from "@/components/Navbar";
 import Pricing from "@/components/PricingComp";
 import Testimonials from "@/components/Testimonials";
+import authOptions from "@/lib/authOptions";
 import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import { getSession, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export default async function  Home() {
   const session = await getServerSession(authOptions)
