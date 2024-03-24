@@ -35,7 +35,7 @@ const Page = () => {
                 email:userEmail,
                 prompt:userPrompt
             })
-            console.log(res.data)
+            // console.log(res.data)
             setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
