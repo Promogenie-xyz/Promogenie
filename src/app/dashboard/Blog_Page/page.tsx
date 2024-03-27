@@ -1,8 +1,10 @@
 'use client'
+import { myStore } from "@/app/store/MyStore"
+import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -10,31 +12,41 @@ import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
-
+    const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
-    const [generations,setGenerations]=useState<string[]>([])
-    const session=useSession()
-    const userEmail=session.data?.user?.email
-    const userPrompt=``
-    const handleSubmit=async()=>{
+    const [generations,setGenerations]=useState<string>('')
+    const userProfile=myStore(state=>state.user) 
+
+    const userPrompt=`Write a blog on the topic ${topic} which should be for the purpose ${post} and have a length of ${length} words`
+    const userEmail=userProfile.email
+    const handleSubmit=async(event: React.FormEvent)=>{
+        setIsLoading(true)
+        setGenerations('')
+        event.preventDefault()
         try{
-            const res=await axios.post('https://marketing-phi-seven.vercel.app/blog',{
+            const res= await axios.post('https://marketing-7do1.onrender.com/blog',{
                 email:userEmail,
                 prompt:userPrompt
-            }) 
+            })
+            // console.log(res)
+            setGenerations(res.data)
+            setIsLoading(false)
             setPost('')
             setLength('')
             setTopic('')
         }catch(err:any){
+            setIsLoading(false)
             console.log(err);
+        }finally{
+            setIsLoading(false)
         }
     }
-    
+    // f48c32
     const router=useRouter()
   return (
-    <div className="w-full h-screen flex flex-col items-center">
+    <div className={`w-full ${generations.length>0 ?'h-full':'h-screen'} flex flex-col items-center overflow-x-hidden bg-black bg-grid-gray-100/[0.1]` }>
         <div className="pt-20 flex items-center justify-center p-4 text-white">
             <Link href='/dashboard'>
             <FaArrowLeft className="hover:cursor-pointer w-6 h-6 lg:hidden mb-10 text-gray-400" />
@@ -59,14 +71,11 @@ const Page = () => {
                 <div className="flex flex-col gap-y-2">
                     <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={length} placeholder="Length in words" onChange={(e)=>setLength(e.target.value)} />
                 </div>
-                <Button variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#f48c32] hover:bg-[#f48c32] font-semibold transition-all"> Submit </Button>
+                <Button disabled={isLoading || (!post ||!length ||!topic)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#f48c32] hover:bg-[#f48c32] font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin ml-1"/></>):(<>Submit</>)} </Button>
             </form>
         </div>
-        <div>
-            {generations.length>0 ?(
-                <div>{generations.map((item,index)=>(
-                        <div key={index}></div>
-            ))}</div>):( <p className="  text-white">no searches yet</p> )}
+        <div className=" w-[80%] lg:ml-[15rem] overflow-x-hidden mt-24 ">
+          {generations && generations.length > 0 && <GenerationComp data={generations} bgColor='bg-[#f48c32]/10' borderColor='border-[#f48c32]/10' />}
         </div>
     </div>
   )
