@@ -10,11 +10,12 @@ import { GetServerSidePropsContext } from "next";
 import { getServerSession } from "next-auth";
 import { getSession, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { myStore } from "./store/MyStore";
 
-export default async function  Home() {
+export default async function Home() {
   const session = await getServerSession(authOptions)
-  if(session) {
-    redirect('/dashboard')
+ if(session) {
+     redirect('/dashboard')
   }
 
   return (

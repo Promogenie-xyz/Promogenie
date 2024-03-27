@@ -16,19 +16,23 @@ import { IoSettingsSharp } from "react-icons/io5";
 import axios from "axios";
 
 const Page = () => {
-
-  const router=useRouter()
+// const {data:session}=useSession()
+// if(!session){
+//   redirect('/')
+// }
   const userProfile=myStore(state=>state.user)
+  // console.log(userProfile)
   const userEmail=userProfile.email
   const premMember=paymentStore(state=>state.isPremiumMember)
   const setPremMember=paymentStore(state=>state.setIsPremiumMember)
   const pathname=usePathname()
+  const router=useRouter()
   useEffect(()=>{
     const checkCustomer=async()=>{
       const isCustomer=await axios.post('https://marketing-7do1.onrender.com/check-customer',{
         email:userEmail
       })
-      // console.log(isCustomer)
+      console.log(isCustomer)
       if(isCustomer.data.status === "subscribed"){
         setPremMember(true)
       }
@@ -37,8 +41,8 @@ const Page = () => {
     checkCustomer()
   },[userEmail,pathname])
   // console.log(userProfile)
-  console.log(userEmail)
-  console.log(premMember)
+  // console.log(userEmail)
+  // console.log(premMember)
   const routes=[
     {
         id:1,
