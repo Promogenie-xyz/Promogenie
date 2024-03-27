@@ -5,20 +5,40 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import {  useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import { FaArrowLeft, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ImBlogger } from "react-icons/im";
 import { MdOutlineMail } from "react-icons/md";
 import { useEffect } from "react";
-import { myStore } from "../store/MyStore";
+import { myStore, paymentStore } from "../store/MyStore";
 import { IoSettingsSharp } from "react-icons/io5";
+import axios from "axios";
 
 const Page = () => {
 
   const router=useRouter()
-  
+  const userProfile=myStore(state=>state.user)
+  const userEmail=userProfile.email
+  const premMember=paymentStore(state=>state.isPremiumMember)
+  const setPremMember=paymentStore(state=>state.setIsPremiumMember)
+  const pathname=usePathname()
+  useEffect(()=>{
+    const checkCustomer=async()=>{
+      const isCustomer=await axios.post('https://marketing-7do1.onrender.com/check-customer',{
+        email:userEmail
+      })
+      // console.log(isCustomer)
+      if(isCustomer.data.status === "subscribed"){
+        setPremMember(true)
+      }
+      // console.log(premMember)
+    }
+    checkCustomer()
+  },[userEmail,pathname])
   // console.log(userProfile)
+  // console.log(userEmail)
+  // console.log(premMember)
   const routes=[
     {
         id:1,

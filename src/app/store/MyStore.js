@@ -16,3 +16,8 @@ export const DataStore=create((set)=>({
     linkedin:'',
     setLinkedin:(linkedin)=>set({linkedin})
 }))
+
+export const paymentStore=create((set)=>({
+    isPremiumMember:false,
+   setIsPremiumMember:(isPremiumMember)=>set({isPremiumMember}) 
+}))
