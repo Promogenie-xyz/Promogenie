@@ -37,8 +37,8 @@ const Page = () => {
     checkCustomer()
   },[userEmail,pathname])
   // console.log(userProfile)
-  // console.log(userEmail)
-  // console.log(premMember)
+  console.log(userEmail)
+  console.log(premMember)
   const routes=[
     {
         id:1,
