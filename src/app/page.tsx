@@ -14,10 +14,10 @@ import { myStore } from "./store/MyStore";
 import Faq from "@/components/Faq";
 
 export default async function Home() {
-//   const session = await getServerSession(authOptions)
-//  if(session) {
-//      redirect('/dashboard')
-//   }
+  const session = await getServerSession(authOptions as Object)
+ if(session) {
+     redirect('/dashboard')
+  }
 
   return (
     <div className="bg-black  bg-grid-gray-100/[0.1] flex flex-col justify-center">

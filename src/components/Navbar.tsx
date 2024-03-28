@@ -1,58 +1,16 @@
 'use client'
 import {myStore} from '@/app/store/MyStore'
-import { signIn, signOut, useSession } from "next-auth/react"
-import { useEffect, useState } from "react"
+import { signIn } from "next-auth/react"
 import { Button } from "./ui/button"
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import { redirect, usePathname, useRouter } from "next/navigation"
+import {  usePathname } from "next/navigation"
 import { FaArrowLeft } from "react-icons/fa"
-import { UserButton, useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
+import { useState } from 'react';
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const router = useRouter();
-  const {isSignedIn}=useAuth()
-  
-  // const handleLogOut=async()=>{
-  //   try{
-  //     await signOut()
-  //     router.push('/')
-  //   }catch(err:any){
-  //     console.log('error logging out');
-  //   }
-  // }
-  // const setUserProfile=myStore(state=>state.setUser)
-  // const userProfile=myStore(state=>state.user)
-  // const handleSignIn = async () => {
-  //   try {
-  //     await signIn('google')
-  //     setIsOpen(false);
-  //   } catch (err: any) {
-  //     console.log(err);
-  //   }
-  // };
-  
-  // const { data: session, status } = useSession();
-  // useEffect(()=>{
-  //   const getUser=()=>{
-  //     if(session?.user){
-  //       setUserProfile(session.user)
-  //       // redirect('/dashboard')
-  //     }
-    
-  //     // console.log(userProfile)
-  //     // redirect('/dashboard')
-  //   }
-  //   getUser()
-  // },[session])
-  // // console.log(userProfile)
-  
-  // // console.log(session?.user)
-  // const toDashboard=()=>{
-  //   router.push('/dashboard')
-  // }
   return (
     <div className="">
       {/* Desktop navigation exclusing dashboard*/}
@@ -78,28 +36,18 @@ const Navbar = () => {
         </div>
       </a>
       {/* Sign-in/sign-out button and Try free button */}
-      {/* <div className="flex text-white items-center gap-x-3 text-lg font-normal">
-        {status === "authenticated" ? (
-          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signOut()} variant={'outline'}>Sign out</Button>
-        ) : (
-          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
-        )}
-        {status === "authenticated" ? (
-          ) : (
-            <a href="#pricing">
-            <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button>
-            </a> 
-            )}
-          </div> */}
-      {/* <div className='w-full bg-white'><UserButton/></div> */}
       <div className="flex text-white items-center gap-x-3 text-lg font-normal">
+          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signIn("google")} variant={'outline'}>Sign in</Button>
+          </div>
+      {/* <div className='w-full bg-white'><UserButton/></div> */}
+      {/* <div className="flex text-white items-center gap-x-3 text-lg font-normal">
         <Link href={`${isSignedIn?'/dashboard':'/sign-up'}`}>
           <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium' >Try free</Button>
         </Link>
         <Link href={`${isSignedIn?'/dashboard':'/sign-in'}`}>
           <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" variant={'outline'}>{isSignedIn?'Go to Dashboard':'Sign-in'}</Button>
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }

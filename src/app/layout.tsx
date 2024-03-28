@@ -3,10 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import IsPremiumContextProvider from "@/components/IsPremium";
-import { CSPostHogProvider } from "@/components/Analytics";
 import { Analytics } from '@vercel/analytics/react';
 import ProModalProvider from "@/components/pro-modal-provider";
-import { ClerkProvider } from '@clerk/nextjs'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,25 +18,20 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // console.log(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
   return (
-    <ClerkProvider publishableKey='pk_live_Y2xlcmsucHJvbW9nZW5pZS54eXok'>
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
-      <CSPostHogProvider>
-      <body className={inter.className}>
-        {/* <Providers>
+      </head>  
+       <body className={inter.className}>
+        <Providers>
           <IsPremiumContextProvider>
-            <ProModalProvider/> */}
+            <ProModalProvider/> 
           {children}
-          {/* <Analytics />
+           <Analytics />
           </IsPremiumContextProvider>
-        </Providers> */}
+        </Providers>
       </body>
-      </CSPostHogProvider>
     </html>
-    </ClerkProvider>
   );
 }

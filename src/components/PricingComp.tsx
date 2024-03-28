@@ -2,7 +2,6 @@
 import { myStore } from "@/app/store/MyStore"
 import { usePremiumContext } from "@/components/IsPremium"
 import Navbar from "@/components/Navbar"
-import { useAuth, useUser } from "@clerk/nextjs"
 import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
 import { redirect, useRouter } from "next/navigation"
@@ -24,10 +23,7 @@ const Pricing = () => {
   //   window.location.replace(Monthly)
   // }
   // const {user}=useUser()
-  const {isSignedIn}=useAuth()
-  const signInwithGoogle=()=>{
-     router.push('/sign-in')
-  }
+
   // const userProfile=myStore(state=>state.user)
   // const setUserProfile=myStore(state=>state.setUser)
   // const {data: session} = useSession()
@@ -41,9 +37,6 @@ const Pricing = () => {
   // },[session])
   // console.log(userProfile)
   const router=useRouter()
-  const toDashboard=()=>{
-    router.push('/dashboard')
-  }
   
     const premium = usePremiumContext()
     // console.log(premium)
@@ -60,8 +53,6 @@ const Pricing = () => {
         ],
         btnBeforeSession:'Sign In',
         btnAfterSession:'Explore more',
-        funcBeforeSession:signInwithGoogle,
-        funcAfterSession:toDashboard
     },
     {
         id:2,
@@ -75,8 +66,6 @@ const Pricing = () => {
         ],
         btnBeforeSession:'Sign In',
         btnAfterSession:'Explore more',
-        funcBeforeSession:signInwithGoogle,
-        funcAfterSession:toDashboard,
   
     },
     {
@@ -90,10 +79,7 @@ const Pricing = () => {
             'Unlimited access to templates.',
         ],
         btnBeforeSession:'Sign In',
-        btnAfterSession:'Explore more',
-        funcBeforeSession:signInwithGoogle,
-        funcAfterSession:toDashboard,
-    
+        btnAfterSession:'Explore more',  
     },
 
 ]
@@ -132,19 +118,7 @@ const Pricing = () => {
     </div>
         ))}
        
-        {isSignedIn === true ? (
-            <button className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600" 
-        onClick={item.funcAfterSession}
-        > 
-        {item.btnAfterSession}
-        </button>
-        ) : (
-            <button className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600" 
-        onClick={item.funcBeforeSession}
-        >
-        {item.btnBeforeSession}
-        </button>
-        )}
+      
       </div>
       </div>
     ))}

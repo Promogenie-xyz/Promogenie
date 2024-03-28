@@ -3,5 +3,5 @@ run:
 
 push:
 	git add .
-	git commit -m "added vercel analytics for meantime"
+	git commit -m "re added next-auth for authentication"
 	git push -u origin main		
