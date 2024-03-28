@@ -13,10 +13,10 @@ import { redirect } from "next/navigation";
 import { myStore } from "./store/MyStore";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions)
- if(session) {
-     redirect('/dashboard')
-  }
+//   const session = await getServerSession(authOptions)
+//  if(session) {
+//      redirect('/dashboard')
+//   }
 
   return (
     <div className="bg-black bg-grid-gray-100/[0.1] flex flex-col justify-center">
@@ -28,7 +28,7 @@ export default async function Home() {
       <Features/>
       <Pricing/>
       <Testimonials/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

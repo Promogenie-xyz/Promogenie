@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import { redirect, useRouter } from "next/navigation"
 
 const SignIn = () => {
-    const { data: session } = useSession()
+    // const { data: session } = useSession()
     // const userProfile=useStore(state=>state.user)
     // console.log(session?.user)
     // console.log(userProfile)

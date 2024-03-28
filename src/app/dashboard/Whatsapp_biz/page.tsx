@@ -3,6 +3,7 @@ import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -13,15 +14,17 @@ import { FaArrowLeft } from "react-icons/fa"
 import { useStore } from "zustand"
 
 const Page = () => {
-    const userProfile=myStore(state=>state.user)
-    // console.log(userProfile)
+
+    const {user}=useUser()
+    // console.log(user?.emailAddresses[0].emailAddress)
+    const userEmail=user?.emailAddresses[0].emailAddress
+    
     const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
     const [prodDesc,setProdDesc]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
-    const userEmail=userProfile.email
     const userPrompt=`Write an advertisement on the topic ${topic} for the product ${prodDesc} which should solve a purpose of ${post} and have a word limit of ${length} words`
     const handleSubmit=async(event: React.FormEvent)=>{
         setIsLoading(true)

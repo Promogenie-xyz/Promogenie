@@ -2,6 +2,7 @@
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -17,8 +18,9 @@ const Page = () => {
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
-    const session=useSession()
-    const userEmail=session.data?.user?.email
+    const {user}=useUser()
+    // console.log(user?.emailAddresses[0].emailAddress)
+    const userEmail=user?.emailAddresses[0].emailAddress
     const userPrompt=`Generate me an Instagram Caption for a post based on topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{

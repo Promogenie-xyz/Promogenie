@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar"
 import Sidebar from "@/components/Sidebar"
+import { auth } from "@clerk/nextjs"
 import { getServerSession } from "next-auth"
 import { getSession, useSession } from "next-auth/react"
 import { redirect } from "next/navigation"

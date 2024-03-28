@@ -2,6 +2,7 @@
 import { myStore } from "@/app/store/MyStore"
 import { usePremiumContext } from "@/components/IsPremium"
 import Navbar from "@/components/Navbar"
+import { useAuth, useUser } from "@clerk/nextjs"
 import { signIn, useSession } from "next-auth/react"
 import Link from "next/link"
 import { redirect, useRouter } from "next/navigation"
@@ -11,33 +12,34 @@ import { MdOutlineCheck } from "react-icons/md";
 
 const Pricing = () => {
 
-    const Yearly = "https://promogenie2.lemonsqueezy.com/buy/47e6a174-e7ed-4442-91a3-d17b912da47b"
+  //   const Yearly = "https://promogenie2.lemonsqueezy.com/buy/47e6a174-e7ed-4442-91a3-d17b912da47b"
 
-  const Monthly = "https://promogenie2.lemonsqueezy.com/buy/72a4ef4b-30cf-4e7e-8d1c-2c8ca330b792"
+  // const Monthly = "https://promogenie2.lemonsqueezy.com/buy/72a4ef4b-30cf-4e7e-8d1c-2c8ca330b792"
 
-  const handleClick = () => {
-    window.location.replace(Yearly)
-  }
+  // const handleClick = () => {
+  //   window.location.replace(Yearly)
+  // }
   
-  const handleClick2 = () => {
-    window.location.replace(Monthly)
-  }
+  // const handleClick2 = () => {
+  //   window.location.replace(Monthly)
+  // }
+  // const {user}=useUser()
+  const {isSignedIn}=useAuth()
   const signInwithGoogle=()=>{
-     signIn("google")
-    //  redirect('/dashboard')
+     router.push('/sign-in')
   }
-  const userProfile=myStore(state=>state.user)
-  const setUserProfile=myStore(state=>state.setUser)
-  const {data: session} = useSession()
-  useEffect(()=>{
-    const getUser=()=>{
-      if(session?.user){
-        setUserProfile(session.user)
-      }
-    }
-    getUser()
-  },[session])
-  console.log(userProfile)
+  // const userProfile=myStore(state=>state.user)
+  // const setUserProfile=myStore(state=>state.setUser)
+  // const {data: session} = useSession()
+  // useEffect(()=>{
+  //   const getUser=()=>{
+  //     if(session?.user){
+  //       setUserProfile(session.user)
+  //     }
+  //   }
+  //   getUser()
+  // },[session])
+  // console.log(userProfile)
   const router=useRouter()
   const toDashboard=()=>{
     router.push('/dashboard')
@@ -56,8 +58,8 @@ const Pricing = () => {
             '10 Free generations.',
             'Limited access to templates.'
         ],
-        btnBeforeSession:'Sign Up',
-        btnAfterSession:'Head to dashboard',
+        btnBeforeSession:'Sign In',
+        btnAfterSession:'Explore more',
         funcBeforeSession:signInwithGoogle,
         funcAfterSession:toDashboard
     },
@@ -71,10 +73,10 @@ const Pricing = () => {
             'Unlimited access to templates.',
             'Priority customer support.'
         ],
-        btnBeforeSession:'Sign Up',
-        btnAfterSession:'Checkout Now',
+        btnBeforeSession:'Sign In',
+        btnAfterSession:'Explore more',
         funcBeforeSession:signInwithGoogle,
-        funcAfterSession:handleClick2,
+        funcAfterSession:toDashboard,
   
     },
     {
@@ -87,10 +89,10 @@ const Pricing = () => {
             'Unlimited generations.',
             'Unlimited access to templates.',
         ],
-        btnBeforeSession:'Sign Up',
-        btnAfterSession:'Checkout Now',
+        btnBeforeSession:'Sign In',
+        btnAfterSession:'Explore more',
         funcBeforeSession:signInwithGoogle,
-        funcAfterSession:handleClick,
+        funcAfterSession:toDashboard,
     
     },
 
@@ -113,9 +115,10 @@ const Pricing = () => {
         <div  className={`flex flex-col  bg-black  rounded-xl text-center  shadow-xl  p-8 ${item.id === 2 ? 'lg:scale-110 ':''} `} >
         <p className="mb-3"><span className={`inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase  bg-blue-100  ${(item.heading === '-30% DISCOUNTED') ? 'text-green-600 font-extrabold':'text-blue-800 font-semibold'} `}>{item.heading}</span></p>
         <h4 className="font-medium text-lg  ">{item.priceCategory}</h4>
-        <span className="mt-5 font-bold text-5xl  ">
+        <span className="mt-5 font-bold text-5xl">
           <span className={`font-bold text-2xl ${item.cost==='Free'?'hidden':''}`}>$</span>
-          {item.cost}
+          <span className={`mt-5 font-bold text-5xl ${item.cost==='Free'?'':'line-through '} `}>{item.cost}</span>
+          <span className={`font-bold text-2xl ml-1 capitalize  ${item.cost==='Free'?'hidden':''}`}>Free</span>
         </span>
         
         {item.features.map((ft,index)=>(
@@ -129,7 +132,7 @@ const Pricing = () => {
     </div>
         ))}
        
-        {session ? (
+        {isSignedIn === true ? (
             <button className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-1 focus:ring-gray-600" 
         onClick={item.funcAfterSession}
         > 

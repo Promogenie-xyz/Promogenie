@@ -1,6 +1,7 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
@@ -16,8 +17,9 @@ const Page = () => {
   const [tools,setTools]=useState<string>('')
   const [role, setRole] = useState<string>('');
   const [generations,setGenerations]=useState<string[]>([])
-  const session=useSession()
-  const userEmail=session.data?.user?.email
+  const {user}=useUser()
+  // console.log(user?.emailAddresses[0].emailAddress)
+  const userEmail=user?.emailAddresses[0].emailAddress
   const userPrompt=``
   // console.log(role);
   const roles = [

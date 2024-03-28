@@ -20,26 +20,26 @@ const Page = () => {
 // if(!session){
 //   redirect('/')
 // }
-  const userProfile=myStore(state=>state.user)
-  // console.log(userProfile)
-  const userEmail=userProfile.email
-  const premMember=paymentStore(state=>state.isPremiumMember)
-  const setPremMember=paymentStore(state=>state.setIsPremiumMember)
-  const pathname=usePathname()
+  // const userProfile=myStore(state=>state.user)
+  // // console.log(userProfile)
+  // const userEmail=userProfile.email
+  // const premMember=paymentStore(state=>state.isPremiumMember)
+  // const setPremMember=paymentStore(state=>state.setIsPremiumMember)
+  // const pathname=usePathname()
   const router=useRouter()
-  useEffect(()=>{
-    const checkCustomer=async()=>{
-      const isCustomer=await axios.post('https://marketing-7do1.onrender.com/check-customer',{
-        email:userEmail
-      })
-      console.log(isCustomer)
-      if(isCustomer.data.status === "subscribed"){
-        setPremMember(true)
-      }
-      // console.log(premMember)
-    }
-    checkCustomer()
-  },[userEmail,pathname])
+  // useEffect(()=>{
+  //   const checkCustomer=async()=>{
+  //     const isCustomer=await axios.post('https://marketing-7do1.onrender.com/check-customer',{
+  //       email:userEmail
+  //     })
+  //     console.log(isCustomer)
+  //     if(isCustomer.data.status === "subscribed"){
+  //       setPremMember(true)
+  //     }
+  //     // console.log(premMember)
+  //   }
+  //   checkCustomer()
+  // },[userEmail,pathname])
   // console.log(userProfile)
   // console.log(userEmail)
   // console.log(premMember)
@@ -136,21 +136,7 @@ const Page = () => {
           })}
       </div>
       {/* <div className="flex lg:hidden px-4 md:px-20 space-y-4 w-full"> */}
-      <Card onClick={()=>router.push('/dashboard/Settings')}  className={`hover:scale-90 mx-4 md:mx-20 lg:hidden mt-4 p-4 border-black/5 bg-black  flex  items-center justify-between hover:shadow-md transition cursor-pointer`}>
-                    {/* div for logo/icon and title  */}
-                  <div className="flex items-center gap-x-4">
-                    {/* div for icon/logo ->1 */}
-                    <div className={cn("p-4 w-fit rounded-md text-[#ef4444]")}>
-                        {/* <item.icon className={cn("w-8 h-8",item.color)}/> */}
-                        <IoSettingsSharp className="w-6 h-6"/> 
-                    </div>
-                    {/* div for title -> 2 */}
-                    <div className={`font-semibold text-gray-600`}>
-                    Go to Settings
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-500"/>
-              </Card>
+      
       {/* </div> */}
 
       </div>

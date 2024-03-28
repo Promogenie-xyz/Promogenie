@@ -7,53 +7,55 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { redirect, usePathname, useRouter } from "next/navigation"
 import { FaArrowLeft } from "react-icons/fa"
+import { UserButton, useAuth } from '@clerk/nextjs'
+import Link from 'next/link'
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
-
+  const {isSignedIn}=useAuth()
   
-  const handleLogOut=async()=>{
-    try{
-      await signOut()
-      router.push('/')
-    }catch(err:any){
-      console.log('error logging out');
-    }
-  }
-  const setUserProfile=myStore(state=>state.setUser)
-  const userProfile=myStore(state=>state.user)
-  const handleSignIn = async () => {
-    try {
-      await signIn('google')
-      setIsOpen(false);
-    } catch (err: any) {
-      console.log(err);
-    }
-  };
+  // const handleLogOut=async()=>{
+  //   try{
+  //     await signOut()
+  //     router.push('/')
+  //   }catch(err:any){
+  //     console.log('error logging out');
+  //   }
+  // }
+  // const setUserProfile=myStore(state=>state.setUser)
+  // const userProfile=myStore(state=>state.user)
+  // const handleSignIn = async () => {
+  //   try {
+  //     await signIn('google')
+  //     setIsOpen(false);
+  //   } catch (err: any) {
+  //     console.log(err);
+  //   }
+  // };
   
-  const { data: session, status } = useSession();
-  useEffect(()=>{
-    const getUser=()=>{
-      if(session?.user){
-        setUserProfile(session.user)
-        // redirect('/dashboard')
-      }
+  // const { data: session, status } = useSession();
+  // useEffect(()=>{
+  //   const getUser=()=>{
+  //     if(session?.user){
+  //       setUserProfile(session.user)
+  //       // redirect('/dashboard')
+  //     }
     
-      // console.log(userProfile)
-      // redirect('/dashboard')
-    }
-    getUser()
-  },[session])
-  // console.log(userProfile)
+  //     // console.log(userProfile)
+  //     // redirect('/dashboard')
+  //   }
+  //   getUser()
+  // },[session])
+  // // console.log(userProfile)
   
-  // console.log(session?.user)
-  const toDashboard=()=>{
-    router.push('/dashboard')
-  }
+  // // console.log(session?.user)
+  // const toDashboard=()=>{
+  //   router.push('/dashboard')
+  // }
   return (
     <div className="">
-      {/* Desktop navigation */}
+      {/* Desktop navigation exclusing dashboard*/}
       {
   !pathname.includes('/dashboard') && (
     <div className="glassy-background hidden md:flex justify-between items-center p-5 mx-4 mt-4 rounded-full">
@@ -76,25 +78,33 @@ const Navbar = () => {
         </div>
       </a>
       {/* Sign-in/sign-out button and Try free button */}
-      <div className="flex text-white items-center gap-x-3 text-lg font-normal">
+      {/* <div className="flex text-white items-center gap-x-3 text-lg font-normal">
         {status === "authenticated" ? (
           <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signOut()} variant={'outline'}>Sign out</Button>
         ) : (
           <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
         )}
         {status === "authenticated" ? (
-          <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium' onClick={toDashboard}>Try free</Button>
-        ) : (
-          <a href="#pricing">
+          ) : (
+            <a href="#pricing">
             <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium'>Try free</Button>
-          </a> 
-        )}
+            </a> 
+            )}
+          </div> */}
+      {/* <div className='w-full bg-white'><UserButton/></div> */}
+      <div className="flex text-white items-center gap-x-3 text-lg font-normal">
+        <Link href={`${isSignedIn?'/dashboard':'/sign-up'}`}>
+          <Button className="text-lg hover:scale-90 ease-in-out transition-all duration-75" variant='premium' >Try free</Button>
+        </Link>
+        <Link href={`${isSignedIn?'/dashboard':'/sign-in'}`}>
+          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" variant={'outline'}>{isSignedIn?'Go to Dashboard':'Sign-in'}</Button>
+        </Link>
       </div>
     </div>
   )
 }
 
-      {/* Mobile navigation */}
+      {/* Mobile navigation excluding dashboard */}
      {!pathname.includes('/dashboard') && <div className="block md:hidden">
         <div className="flex justify-between items-center md:hidden z-10 glassy-background mx-4 mt-4 p-5 rounded-full">
           <a href="/">
@@ -119,22 +129,22 @@ const Navbar = () => {
             <a href="#testimonials">
               <div className="hover:bg-[#464646] hover:mx-2 hover:rounded-2xl" onClick={() => setIsOpen(false)}>Testimonials</div>
             </a>
-            {status === "authenticated" ? (
-              <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signOut()} variant={'outline'}>Sign out</Button>
-            ) : (
-              <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={handleSignIn} variant={'outline'}>Sign in</Button>
-            )}
-            {
-              status ==="authenticated" ?<a href="/dashboard"><Button className="text-lg w-full" variant='premium'>Try free</Button></a> : <a href="#pricing"><Button className="text-lg w-full" variant='premium'>Try free</Button></a> 
-            }
+            
+        <Link href={`${isSignedIn?'/dashboard':'/sign-up'}`}>
+          <Button className="text-lg w-full" variant='premium'>Try free</Button>
+        </Link>
+        <Link href={`${isSignedIn?'/dashboard':'/sign-in'}`}>
+          <Button className='text-lg w-full rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400'  variant={'outline'}>{isSignedIn?'Go to Dashboard':'Sign-in'}</Button>
+        </Link>
+
           </div>
         )}
       </div>}
 
-      {/* for dashboard  */}
-      {pathname ==='/dashboard' && (<div className="flex lg:hidden bg-black p-8  justify-between items-center">
+      {/* for dashboard of mobiles and laps */}
+      {pathname ==='/dashboard' && (<div className="flex bg-black p-4  justify-between items-center">
                 <a href="/"><p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p></a>
-            
+                <div><UserButton/></div>
         </div>)}
     </div>
   );
