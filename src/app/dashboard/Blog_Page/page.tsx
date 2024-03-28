@@ -3,7 +3,6 @@ import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
-import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -13,14 +12,13 @@ import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
+    const {data: session} = useSession()
     const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
-    const {user}=useUser()
-  // console.log(user?.emailAddresses[0].emailAddress)
-  const userEmail=user?.emailAddresses[0].emailAddress
+    const userEmail = session?.user?.email
     const userPrompt=`Write a blog on the topic ${topic} which should be for the purpose ${post} and have a length of ${length} words`
     const handleSubmit=async(event: React.FormEvent)=>{
         setIsLoading(true)

@@ -3,7 +3,6 @@ import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
-import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -15,9 +14,9 @@ import { useStore } from "zustand"
 
 const Page = () => {
 
-    const {user}=useUser()
-    // console.log(user?.emailAddresses[0].emailAddress)
-    const userEmail=user?.emailAddresses[0].emailAddress
+  const {data: session} = useSession()
+    // console.log(const userEmail= session?.user?.email)
+   const userEmail= session?.user?.email
     
     const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()

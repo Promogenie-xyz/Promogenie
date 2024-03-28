@@ -4,7 +4,6 @@ import { ProModalStore, myStore, paymentStore } from "@/app/store/MyStore"
 import Heading from "@/components/Heading"
 import ProModalUi from "@/components/pro-modal-ui"
 import { Button } from "@/components/ui/button"
-import { UserButton } from "@clerk/nextjs"
 import { signOut, useSession } from "next-auth/react"
 import Link from "next/link"
 import { redirect } from "next/navigation"
@@ -34,8 +33,7 @@ const Page = () => {
             />
         </div>
         <div className="flex flex-col gap-y-4 ">
-            {/* <Button variant={'destructive'} onClick={() => signOut()}>Log Out</Button> */}
-            <UserButton/>
+            <Button variant={'destructive'} onClick={() => signOut()}>Log Out</Button> 
         </div>
     </div>
   )

@@ -77,13 +77,6 @@ const Navbar = () => {
             <a href="#testimonials">
               <div className="hover:bg-[#464646] hover:mx-2 hover:rounded-2xl" onClick={() => setIsOpen(false)}>Testimonials</div>
             </a>
-            
-        <Link href={`${isSignedIn?'/dashboard':'/sign-up'}`}>
-          <Button className="text-lg w-full" variant='premium'>Try free</Button>
-        </Link>
-        <Link href={`${isSignedIn?'/dashboard':'/sign-in'}`}>
-          <Button className='text-lg w-full rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400'  variant={'outline'}>{isSignedIn?'Go to Dashboard':'Sign-in'}</Button>
-        </Link>
 
           </div>
         )}
@@ -92,7 +85,6 @@ const Navbar = () => {
       {/* for dashboard of mobiles and laps */}
       {pathname ==='/dashboard' && (<div className="flex bg-black p-4  justify-between items-center">
                 <a href="/"><p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p></a>
-                <div><UserButton/></div>
         </div>)}
     </div>
   );

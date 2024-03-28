@@ -3,7 +3,6 @@ import { DataStore, myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
-import { useUser } from "@clerk/nextjs"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -13,6 +12,7 @@ import { useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 
 const Page = () => {
+    const {data: session} = useSession()
     const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
     const [mood,setMood]=useState<string>()
@@ -20,9 +20,8 @@ const Page = () => {
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
 
-    const {user}=useUser()
-    // console.log(user?.emailAddresses[0].emailAddress)
-    const userEmail=user?.emailAddresses[0].emailAddress
+    // console.log(const userEmail= session?.user?.email)
+  const userEmail= session?.user?.email
     const userPrompt=`Generate me a Twitter post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
     // console.log(userEmail)
     // console.log(userEmail,userPrompt)
