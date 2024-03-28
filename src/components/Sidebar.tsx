@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import { cn } from "./ui/cn";
 import FreeCounter from "./FreeCounter";
 import { IoSettingsSharp } from "react-icons/io5";
-import { UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 const Sidebar = () => {
     const routes=[
