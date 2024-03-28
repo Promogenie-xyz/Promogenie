@@ -2,7 +2,7 @@
 import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
-import { Button } from "@/components/ui/button"
+import { Button }  from "@/components/ui/button"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
