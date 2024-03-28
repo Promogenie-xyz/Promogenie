@@ -22,7 +22,7 @@ export default async function RootLayout({
 }>) {
   // console.log(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY)
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey='pk_live_Y2xlcmsucHJvbW9nZW5pZS54eXok'>
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
