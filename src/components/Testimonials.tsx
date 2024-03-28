@@ -24,7 +24,7 @@ const data = [
     
 const Testimonials = () => {
   return (
-    <div id="testimonials" className="h-[40rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
+    <div id="testimonials" className="h-[40rem] mt-24 rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden">
         <h1 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-fuchsia-200 mb-4">Our Testimonials</h1>
        <InfiniteMovingCards
         items={data}
