@@ -3,6 +3,7 @@ import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button }  from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -17,7 +18,7 @@ const Page = () => {
   const {data: session} = useSession()
     // console.log(const userEmail= session?.user?.email)
    const userEmail= session?.user?.email
-    
+    const currentDate=getCurrentDate()
     const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
     const [prodDesc,setProdDesc]=useState<string>()
@@ -32,7 +33,10 @@ const Page = () => {
         try{
             const res= await axios.post('https://marketing-7do1.onrender.com/whatsapp',{
                 email:userEmail,
-                prompt:userPrompt
+                prompt:userPrompt,
+                title:topic,
+                presentDate:currentDate,
+                type:'Whatsapp-business',
             })
             // console.log(res)
             setGenerations(res.data)

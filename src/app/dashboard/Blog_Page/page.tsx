@@ -3,6 +3,7 @@ import { myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -20,6 +21,7 @@ const Page = () => {
     const [generations,setGenerations]=useState<string>('')
     const userEmail = session?.user?.email
     const userPrompt=`Write a blog on the topic ${topic} which should be for the purpose ${post} and have a length of ${length} words`
+    const currentDate=getCurrentDate()
     const handleSubmit=async(event: React.FormEvent)=>{
         setIsLoading(true)
         setGenerations('')
@@ -27,7 +29,10 @@ const Page = () => {
         try{
             const res= await axios.post('https://marketing-7do1.onrender.com/blog',{
                 email:userEmail,
-                prompt:userPrompt
+                prompt:userPrompt,
+                title:topic,
+                presentDate:currentDate,
+                type:'Blog',
             })
             // console.log(res)
             setGenerations(res.data)

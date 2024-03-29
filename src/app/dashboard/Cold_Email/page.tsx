@@ -1,6 +1,7 @@
 'use client'
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
@@ -21,6 +22,7 @@ const Page = () => {
   // console.log(const userEmail= session?.user?.email)
   const userEmail= session?.user?.email
   const userPrompt=``
+  const currentDate=getCurrentDate()
   // console.log(role);
   const roles = [
     {
@@ -48,7 +50,10 @@ const Page = () => {
     try{
         const res=await axios.post('https://marketing-phi-seven.vercel.app/email',{
             email:userEmail,
-            prompt:userPrompt
+            prompt:userPrompt,
+            title:'Cold email',
+            presentDate:currentDate,
+            type:'Cold-Email',
         })
       setCompany('')
       setSenderName('')

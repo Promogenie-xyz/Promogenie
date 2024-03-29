@@ -3,6 +3,7 @@ import { DataStore, myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -20,6 +21,7 @@ const Page = () => {
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
     const userProfile=myStore(state=>state.user)
+    const currentDate=getCurrentDate()
     // console.log(userProfile)
     // console.log(const userEmail= session?.user?.email)
   const userEmail= session?.user?.email
@@ -33,7 +35,10 @@ const Page = () => {
         try{
             const res= await axios.post('https://marketing-7do1.onrender.com/twitter',{
                 email:userEmail,
-                prompt:userPrompt
+                prompt:userPrompt,
+                title:topic,
+                presentDate:currentDate,
+                type:'Twitter',
             })
             console.log(res.data)
             setGenerations(res.data)

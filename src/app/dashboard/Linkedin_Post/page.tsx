@@ -37,6 +37,7 @@ const Page = () => {
                 prompt:userPrompt,
                 title:topic,
                 presentDate:currentDate,
+                type:'LinkedIn',
             })
             // console.log(res.data)
             // console.log(res)

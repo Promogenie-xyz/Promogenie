@@ -2,6 +2,7 @@
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -21,6 +22,7 @@ const Page = () => {
     // console.log(const userEmail= session?.user?.email)
     const userEmail= session?.user?.email
     const userPrompt=`Generate me an Instagram Caption for a post based on topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`
+    const currentDate=getCurrentDate()
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{
             event.preventDefault()
@@ -28,7 +30,10 @@ const Page = () => {
         try{
             const res=await axios.post('https://marketing-7do1.onrender.com/instagram',{
                 email:userEmail,
-                prompt:userPrompt
+                prompt:userPrompt,
+                title:topic,
+                presentDate:currentDate,
+                type:'Instagram',
             })
             // console.log(res.data)
             setGenerations(res.data)
