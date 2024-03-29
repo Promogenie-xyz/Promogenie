@@ -8,6 +8,7 @@ import {  usePathname } from "next/navigation"
 import { FaArrowLeft } from "react-icons/fa"
 import Link from 'next/link'
 import { useState } from 'react';
+import Logout from './Logout';
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -83,8 +84,11 @@ const Navbar = () => {
       </div>}
 
       {/* for dashboard of mobiles and laps */}
-      {pathname ==='/dashboard' && (<div className="flex bg-black p-4  justify-between items-center">
-                <a href="/"><p className="flex items-center lg:hidden text-gray-400"><FaArrowLeft className="h-4 w-4 mr-2"/> Go back to Homepage</p></a>
+      {pathname ==='/dashboard' && (<div className="flex bg-black p-4 z-50 justify-between items-center">
+                {/* <div className='text-white'>Promogenie.</div> */}
+                <div className='text-white'></div>
+        
+                <Logout/>
         </div>)}
     </div>
   );
