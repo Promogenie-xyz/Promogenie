@@ -22,7 +22,7 @@ const Page = () => {
     // console.log(const userEmail= session?.user?.email)
     const userEmail= session?.user?.email
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of atleast length of ${length} words.`
-    console.log(userEmail)
+    // console.log(userEmail)
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{
         setIsLoading(true)
@@ -31,9 +31,11 @@ const Page = () => {
         try{
             const res= await axios.post('https://marketing-7do1.onrender.com/linkedin',{
                 email:userEmail,
-                prompt:userPrompt
+                prompt:userPrompt,
+                title:topic,
             })
             // console.log(res.data)
+            // console.log(res)
             setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
