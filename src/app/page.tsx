@@ -19,7 +19,7 @@ export default async function Home() {
      redirect('/dashboard')
   }
   console.log(session)
-
+  
   return (
     <div className="bg-black  bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>

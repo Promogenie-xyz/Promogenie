@@ -3,6 +3,7 @@ import { DataStore, myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
+import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
@@ -18,7 +19,9 @@ const Page = () => {
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
+    const currentDate=getCurrentDate()
 
+    // console.log(currentDate)
     // console.log(const userEmail= session?.user?.email)
     const userEmail= session?.user?.email
     const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of atleast length of ${length} words.`
@@ -33,6 +36,7 @@ const Page = () => {
                 email:userEmail,
                 prompt:userPrompt,
                 title:topic,
+                presentDate:currentDate,
             })
             // console.log(res.data)
             // console.log(res)
