@@ -19,7 +19,8 @@ const Page = () => {
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
-
+    const userProfile=myStore(state=>state.user)
+    // console.log(userProfile)
     // console.log(const userEmail= session?.user?.email)
   const userEmail= session?.user?.email
     const userPrompt=`Generate me a Twitter post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of length ${length} words.`

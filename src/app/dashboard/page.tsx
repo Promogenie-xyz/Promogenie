@@ -16,11 +16,18 @@ import { IoSettingsSharp } from "react-icons/io5";
 import axios from "axios";
 
 const Page = () => {
-// const {data:session}=useSession()
+const {data:session}=useSession()
 // if(!session){
 //   redirect('/')
 // }
-  // const userProfile=myStore(state=>state.user)
+  const userProfile=myStore(state=>state.user)
+  const setUserProfile=myStore(state=>state.setUser)
+  useEffect(()=>{
+    if(session?.user){
+      setUserProfile(session.user)
+    }
+  },[session?.user])
+  // console.log(userProfile)
   // // console.log(userProfile)
   // const userEmail=userProfile.email
   // const premMember=paymentStore(state=>state.isPremiumMember)
