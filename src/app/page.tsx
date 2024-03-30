@@ -12,6 +12,7 @@ import { getSession, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { myStore } from "./store/MyStore";
 import Faq from "@/components/Faq";
+import Problem from "@/components/Problem";
 
 export default async function Home() {
   const session = await getServerSession(authOptions as Object)
@@ -27,6 +28,7 @@ export default async function Home() {
         <div className=" absolute pointer-events-none inset-0 z-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
           <Headercomp/>
       </div>
+      <Problem/>
       <Features/>
       <Pricing/>
       <Faq/>

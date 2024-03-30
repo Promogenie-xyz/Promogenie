@@ -37,7 +37,7 @@ const Logout = () => {
         <DialogTrigger className="" asChild>
         <Button className='flex items-center text-black font-semibold' variant={'premium'}>Logout</Button>
         </DialogTrigger>
-    <DialogContent className=" bg-black h-[280px] sm:max-w-[425px]">
+    <DialogContent className="bg-black h-[280px]  w-[350px] md:w-[425px]">
           <DialogHeader>
             <DialogTitle className="text-white">Are you sure you want to logout from promogenie?</DialogTitle>
             <DialogDescription className="pt-6 text-gray-400 text-sm">
