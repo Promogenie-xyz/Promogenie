@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 import { myStore } from "./store/MyStore";
 import Faq from "@/components/Faq";
 import Problem from "@/components/Problem";
+import Comparison from "@/components/Comparison";
 
 export default async function Home() {
   const session = await getServerSession(authOptions as Object)
@@ -22,7 +23,7 @@ export default async function Home() {
   console.log(session)
   
   return (
-    <div className="bg-black  bg-grid-gray-100/[0.1] flex flex-col justify-center">
+    <div className="bg-black pb-4 bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>
       <div className="h-[50rem]  w-full overflow-x-hidden -z-0 relative flex  items-center justify-center ">
         <div className=" absolute pointer-events-none inset-0 z-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
@@ -30,10 +31,11 @@ export default async function Home() {
       </div>
       <Problem/>
       <Features/>
+      <Comparison/>
       <Pricing/>
-      <Faq/>
       <Testimonials/>
-      {/* <Footer/> */}
+      <Faq/>
+      <Footer/>
     </div>
   );
 }

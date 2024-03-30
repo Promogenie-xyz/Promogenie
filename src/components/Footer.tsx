@@ -2,11 +2,11 @@
 
 const Footer = () => {
   return (
-    <div className="bg-black h-[6rem] pt-12 mb-10 md:mb-0 flex text-center items-center justify-center">
-        <p className="text-3xl mb-6 text-white font-semibold">Built with love by 
-            <a href="https://twitter.com/Shobhnik__13" target="_blank"><span className="cursor-pointer font-extrabold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500"> Shobhnik </span></a>
-            <span className=" font-extrabold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">&</span>
-            <a href="https://twitter.com/arrpitttwts" target="_blank"><span className=" cursor-pointer font-extrabold text-4xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500"> Arpit</span></a>
+    <div className="h-[6rem] pt-28 flex text-center items-center text-gray-400 justify-center">
+        <p className="text-xl mb-6  font-semibold text-gray-400">Created by 
+            <a href="https://twitter.com/Shobhnik__13" target="_blank"><span className="cursor-pointer font-semibold text-xl text-gray-400 hover:underline hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-fuchsia-400 to-fuchsia-200"> Shobhnik </span></a>
+            <span className=" font-semibold text-xl text-gray-400">&</span>
+            <a href="https://twitter.com/arrpitttwts" target="_blank"><span className="text-gray-400  font-semibold hover:underline hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-fuchsia-400 to-fuchsia-200 cursor-pointer text-xl "> Arpit</span></a>
         </p>
     </div>
   )
