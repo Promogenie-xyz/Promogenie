@@ -7,18 +7,24 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 const Page = () => {
-  const [type,setType]=useState<string>('all')
+  const [type,setType]=useState<string>('none')
   const {data:session}=useSession()
   const [apiData,setApiData]=useState([])
   const userEmail=session?.user?.email
+  console.log(type)
   useEffect(()=>{
     const fetchData=async()=>{
-      const res=await axios.post(`https://marketing-7do1.onrender.com/history?${type}`,{
-        email:userEmail
-      })
+      try{
+        const res=await axios.post(`https://marketing-7do1.onrender.com/history?$type=${type}`,{
+          email:userEmail
+        })
+        console.log(res.data)
+      }catch(error:any){
+        console.log(error)
+      }
     }
     fetchData()
-  },[type]) 
+  },[type,userEmail]) 
   const types=[
     {
       id:1,
@@ -67,12 +73,12 @@ const Page = () => {
               </div>   
             ))}     
       </div>
-      <div className="ml-48 mt-2">
+      {apiData.length === 0 && (<><div className="ml-48 mt-2">
             <Image src={'/empty.png'} alt="nothing_img" className="" width={500} height={500}/>
       </div>
       <div className="flex justify-center ml-48 -mt-[10px]">
         <h1 className="text-3xl text-center font-semibold text-gray-400 italic">Nothing to show here. Keep generating....</h1>
-      </div>
+      </div></>)}
     </div>
   )
 }
