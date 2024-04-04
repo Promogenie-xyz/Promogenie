@@ -9,6 +9,8 @@ import { cn } from "./ui/cn";
 import FreeCounter from "./FreeCounter";
 import { IoSettingsSharp } from "react-icons/io5";
 import { Button } from "./ui/button";
+import { TbNotes } from "react-icons/tb";
+
 const Sidebar = () => {
     const routes=[
         {
@@ -53,7 +55,13 @@ const Sidebar = () => {
             label:'WhatsApp Business',
             color:'text-[#2ab13fff]'
         },
-
+        {
+            id:7,
+            icon:<TbNotes className="h-6 w-6"/>,
+            href:'/dashboard/History',
+            label:'History',
+            color:'text-[#4a5296]',
+        }
     ]
     const pathname=usePathname()
   return (
