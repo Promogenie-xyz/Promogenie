@@ -11,6 +11,14 @@ const Page = () => {
   const {data:session}=useSession()
   const [apiData,setApiData]=useState([])
   const userEmail=session?.user?.email
+  useEffect(()=>{
+    const fetchData=async()=>{
+      const res=await axios.post(`https://marketing-7do1.onrender.com/history?${type}`,{
+        email:userEmail
+      })
+    }
+    fetchData()
+  },[type]) 
   const types=[
     {
       id:1,
@@ -49,7 +57,6 @@ const Page = () => {
     },
   ]
   return (
-    
     <div className="w-full h-full flex flex-col items-center pt-20 ">
       <div className="flex  justify-center gap-x-8 items-center  ml-72">
             {types.map((item)=>(
