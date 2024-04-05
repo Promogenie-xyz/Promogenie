@@ -35,7 +35,7 @@ export default async function Home() {
       <Pricing/>
       <Testimonials/>
       <Faq/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
