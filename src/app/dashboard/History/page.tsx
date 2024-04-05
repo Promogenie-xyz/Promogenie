@@ -12,21 +12,21 @@ const Page = () => {
   const [apiData,setApiData]=useState([])
   const userEmail=session?.user?.email
   // console.log(type)
-  useEffect(()=>{
-    const fetchData=async()=>{
-      try{
-        const res=await axios.post(`https://marketing-7do1.onrender.com/history/${type}`,{
-          email:userEmail
-        })
-        // console.log(res.data.data)
-        setApiData(res.data.data)
-      }catch(error:any){
-        console.log(error)
-      }
-    }
-    fetchData()
-  },[type,userEmail]) 
-  console.log(apiData)
+  // useEffect(()=>{
+  //   const fetchData=async()=>{
+  //     try{
+  //       const res=await axios.post(`https://marketing-7do1.onrender.com/history/${type}`,{
+  //         email:userEmail
+  //       })
+  //       // console.log(res.data.data)
+  //       setApiData(res.data.data)
+  //     }catch(error:any){
+  //       console.log(error)
+  //     }
+  //   }
+  //   fetchData()
+  // },[type,userEmail]) 
+  // console.log(apiData)
   const types=[
     {
       id:1,
@@ -75,12 +75,18 @@ const Page = () => {
               </div>   
             ))}     
       </div>
-      {apiData.length === 0 && (<><div className="ml-48 mt-2">
+      {apiData.length === 0 ? (<><div className="ml-48 mt-2">
             <Image src={'/empty.png'} alt="nothing_img" className="" width={500} height={500}/>
       </div>
       <div className="flex justify-center ml-48 -mt-[10px]">
-        <h1 className="text-3xl text-center font-semibold text-gray-400 italic">Nothing to show here. Keep generating....</h1>
-      </div></>)}
+        <h1 className="text-3xl text-center font-semibold text-gray-400 italic">Please hang on as we are working on it...</h1>
+      </div></>):(
+        <>
+          <div>
+
+          </div>
+        </>
+      )}
     </div>
   )
 }

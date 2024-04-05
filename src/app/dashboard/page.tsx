@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { myStore, paymentStore } from "../store/MyStore";
 import { IoSettingsSharp } from "react-icons/io5";
 import axios from "axios";
+import { TbNotes } from "react-icons/tb";
 
 const Page = () => {
 const {data:session}=useSession()
@@ -142,9 +143,13 @@ const {data:session}=useSession()
             )
           })}
       </div>
-      {/* <div className="flex lg:hidden px-4 md:px-20 space-y-4 w-full"> */}
-      
-      {/* </div> */}
+      <div  onClick={()=>router.push('/dashboard/History')} className="mb-10 flex gap-x-2 justify-between bg-black mx-auto lg:hidden items-center mt-8 p-2 px-10 md:px-20 space-y-4 w-full">
+        <div className="flex gap-x-10">
+        <TbNotes className="h-6 w-6 ml-2 text-[#4a5296]"/>
+        <p className="text-gray-500">History</p>
+        </div>
+      <ArrowRight className="h-5 w-5 text-gray-500"/>
+      </div>
 
       </div>
   )

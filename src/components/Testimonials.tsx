@@ -5,20 +5,15 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 const data = [
     {
       quote:
-        "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-      name: "Charles Dickens",
-      title: "A Tale of Two Cities",
+        "The best ever free content generating tool I've ever used. I was impressed by the clean UI and a great user experience. Will definitely recommend people to use this in their day to day lives.",
+      name: "Divyanshu Singh",
+      title: "Founder at Comify Technologies",
     },
     {
       quote:
-        "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-      name: "William Shakespeare",
-      title: "Hamlet",
-    },
-    {
-      quote: "All that we see or seem is but a dream within a dream.",
-      name: "Edgar Allan Poe",
-      title: "A Dream Within a Dream",
+        "Promogenie has revolutionized the way I approach content creation for social media. As a social media manager, I'm constantly on the lookout for fresh and engaging content ideas. ",
+      name: "Shivam gupta",
+      title: "Student",
     },
 ];
     
