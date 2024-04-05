@@ -13,10 +13,10 @@ const SignIn = () => {
     return (
         <div className="py-20 text-2xl px-6 max-sm:text-lg">
             <button className="p-[3px] relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+                <div className="absolute inset-0 rounded-lg" />
                 <a href="https://cal.com/shobhnik13/15min" target="_blank">
-                    <div className="px-6 py-2 sm:px-4 sm:py-1 md:px-8 md:py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent text-base sm:text-sm md:text-xl lg:text-2xl">
-                        Schedule a call with the team for demo, pricing.
+                    <div className="px-6 py-2 sm:px-4 sm:py-1 md:px-8 md:py-2 text-black font-semibold rounded-[6px] relative group transition-all bg-gradient-to-r from-fuchsia-700 via-fuchsia-500 to-fuchsia-300 hover:cursor-pointer hover:scale-110  ease-in-out duration-100 text-white-border-0 text-base sm:text-sm md:text-xl lg:text-2xl">
+                        Got some ideas? Schedule a meet then!
                     </div>
                 </a>
             </button>

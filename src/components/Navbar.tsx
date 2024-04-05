@@ -23,8 +23,8 @@ const Navbar = () => {
         <a href="#features">
           <div className="hover:underline underline-offset-1 cursor-pointer">Features</div>
         </a>
-        <a href="#pricing">
-          <div className="hover:underline underline-offset-1 cursor-pointer">Pricing</div>
+        <a href="#faq">
+          <div className="hover:underline underline-offset-1 cursor-pointer">FAQ&apos;s</div>
         </a>
         <a href="#testimonials">
           <div className="hover:underline underline-offset-1 cursor-pointer">Testimonials</div>
@@ -78,7 +78,7 @@ const Navbar = () => {
             <a href="#testimonials">
               <div className="hover:bg-[#464646] hover:mx-2 hover:rounded-2xl" onClick={() => setIsOpen(false)}>Testimonials</div>
             </a>
-
+            <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signIn("google")} variant={'premium'}>Sign in</Button>
           </div>
         )}
       </div>}

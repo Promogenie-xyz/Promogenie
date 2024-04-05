@@ -70,22 +70,6 @@ const Features = () => {
           ),
         },
         {
-          title: "Youtube community posts",
-          description:
-            "Supercharge your YouTube community engagement with us. Tailored for maximum impact, our posts grab attention and foster meaningful interactions. Whether it's teasing upcoming content or sharing exclusive offers, we ensure your community stays engaged and excited. Elevate your YouTube channel's presence and connect with your audience like never before with our powerful promo posts. Try them now and watch your community grow!",
-          content: (
-            <div className="h-full w-full  flex items-center justify-center text-white">
-            <Image
-              src="/Youtube.png"
-              width={300}
-              height={300}
-              className="h-full w-full object-cover"
-              alt="linear board demo"
-            />
-          </div>
-          ),
-        },
-        {
             title: "WhatsApp Buisness messages",
             description:
               "Revolutionize your business communication with our website promogenie generating WhatsApp messages. Crafted with precision, our messages are designed to engage customers and drive conversions. From personalized offers to timely updates, we ensure your business stays top-of-mind with your audience. Take your WhatsApp marketing to the next level and boost your business growth with our powerful promo messages. Try them now and see the difference in customer engagement!",

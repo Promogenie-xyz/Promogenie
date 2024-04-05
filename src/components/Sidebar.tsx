@@ -10,9 +10,16 @@ import FreeCounter from "./FreeCounter";
 import { IoSettingsSharp } from "react-icons/io5";
 import { Button } from "./ui/button";
 import { TbNotes } from "react-icons/tb";
-
+// import { FaArrowLeft } from "react-icons/fa6"
 const Sidebar = () => {
     const routes=[
+        {
+            id:8,
+            icon:<FaArrowLeft className="h-6 w-6" />,
+            href:'/dashboard',
+            label:'Head to dashboard',
+            color:'text-gray-400'
+        },
         {
             id:1,
             icon:<FaLinkedin className="h-6 w-6" />,
