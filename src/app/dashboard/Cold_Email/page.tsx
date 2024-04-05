@@ -1,8 +1,10 @@
 'use client'
+import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
 import { Button } from "@/components/ui/button"
 import { getCurrentDate } from "@/lib/GetCurrentDate"
 import axios from "axios"
+import { Loader2 } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
@@ -17,11 +19,11 @@ const Page = () => {
   const [field,setField]=useState<string>('')
   const [tools,setTools]=useState<string>('')
   const [role, setRole] = useState<string>('');
-  const [generations,setGenerations]=useState<string[]>([])
-  
+  const [generations,setGenerations]=useState<string>('')
+  const [isLoading,setIsLoading]=useState<boolean>(false)
   // console.log(const userEmail= session?.user?.email)
   const userEmail= session?.user?.email
-  const userPrompt=``
+  const userPrompt=`Generate a cold email from sender name as ${senderName} to a receiver name as ${receiverName} for a ${role} role in the field of ${field} considering a work exp of ${workxp} and having a great knowledge of building things on ${tools}`
   const currentDate=getCurrentDate()
   // console.log(role);
   const roles = [
@@ -46,26 +48,35 @@ const Page = () => {
         label: 'Freelance'
     }
 ]
-  const handleSubmit=async()=>{
-    try{
-        const res=await axios.post('https://marketing-phi-seven.vercel.app/email',{
-            email:userEmail,
-            prompt:userPrompt,
-            title:'Cold email',
-            presentDate:currentDate,
-            type:'Cold-Email',
-        })
-      setCompany('')
-      setSenderName('')
-      setReceiverName('')
-      setWorkxp('')
-      setField('')
-      setTools('')
-      
-  }catch(err:any){
-      console.log(err);
-  }
-    
+  const handleSubmit=async(event: React.FormEvent)=>{
+        setIsLoading(true)
+        setGenerations('')
+        event.preventDefault()
+        try{
+            const res= await axios.post('https://marketing-7do1.onrender.com/email',{
+                email:userEmail,
+                prompt:userPrompt,
+                title:`Cold email for a ${role} in ${field} at ${company}`,
+                presentDate:currentDate,
+                type:'Cold-Email',
+            })
+            // console.log(res.data)
+            // console.log(res)
+            setGenerations(res.data.response)
+            setIsLoading(false)
+            setSenderName('')
+            setCompany('')
+            setReceiverName('')
+            setWorkxp('')
+            setField('')
+            setRole('')
+            setTools('')
+        }catch(err:any){
+            setIsLoading(false)
+            console.log(err);
+        }finally{
+            setIsLoading(false)
+        }
   }
   return (
     <div className="w-full h-full  flex flex-col items-center">
@@ -117,14 +128,11 @@ const Page = () => {
 
                 <div className="flex flex-col gap-y-2">
                 </div>
-                <Button variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-red-500 hover:bg-red-500 font-semibold transition-all"> Submit </Button>
+                <Button disabled={isLoading || (!senderName ||!receiverName ||!company||!workxp||!tools||!role||!field)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-red-500 hover:bg-red-500 font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin ml-1"/></>):(<>Submit</>)} </Button>
             </form>
         </div>
-        <div>
-            {generations.length>0 ?(
-                <div>{generations.map((item,index)=>(
-                        <div key={index}></div>
-            ))}</div>):( <p className="  text-white">no searches yet</p> )}
+        <div className=" w-[80%] lg:ml-[15rem] overflow-x-hidden mt-24 ">
+          {generations && generations.length > 0 && <GenerationComp data={generations} bgColor='bg-red-500/10' borderColor='border-red-500/10' />}
         </div>
     </div>
   )

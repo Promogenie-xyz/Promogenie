@@ -39,7 +39,7 @@ const Page = () => {
                 type:'Whatsapp-business',
             })
             // console.log(res)
-            setGenerations(res.data)
+            setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
             setProdDesc('')

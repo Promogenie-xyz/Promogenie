@@ -36,7 +36,7 @@ const Page = () => {
                 type:'Instagram',
             })
             // console.log(res.data)
-            setGenerations(res.data)
+            setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
             setMood('')

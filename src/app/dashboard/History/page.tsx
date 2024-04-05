@@ -11,20 +11,22 @@ const Page = () => {
   const {data:session}=useSession()
   const [apiData,setApiData]=useState([])
   const userEmail=session?.user?.email
-  console.log(type)
+  // console.log(type)
   useEffect(()=>{
     const fetchData=async()=>{
       try{
-        const res=await axios.post(`https://marketing-7do1.onrender.com/history?$type=${type}`,{
+        const res=await axios.post(`https://marketing-7do1.onrender.com/history/${type}`,{
           email:userEmail
         })
-        console.log(res.data)
+        // console.log(res.data.data)
+        setApiData(res.data.data)
       }catch(error:any){
         console.log(error)
       }
     }
     fetchData()
   },[type,userEmail]) 
+  console.log(apiData)
   const types=[
     {
       id:1,

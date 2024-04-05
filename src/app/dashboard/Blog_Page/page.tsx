@@ -35,7 +35,7 @@ const Page = () => {
                 type:'Blog',
             })
             // console.log(res)
-            setGenerations(res.data)
+            setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
             setLength('')

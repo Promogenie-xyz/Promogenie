@@ -40,8 +40,8 @@ const Page = () => {
                 presentDate:currentDate,
                 type:'Twitter',
             })
-            console.log(res.data)
-            setGenerations(res.data)
+            // console.log(res.data)
+            setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
             setMood('')
