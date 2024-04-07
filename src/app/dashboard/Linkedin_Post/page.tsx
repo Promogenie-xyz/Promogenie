@@ -40,7 +40,7 @@ const Page = () => {
                 type:'LinkedIn',
             })
             // console.log(res.data)
-            // console.log(res)
+            // console.log(res.data.response)
             setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
