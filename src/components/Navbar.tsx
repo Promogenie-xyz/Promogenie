@@ -38,7 +38,7 @@ const Navbar = () => {
       </a>
       {/* Sign-in/sign-out button and Try free button */}
       <div className="flex text-white items-center gap-x-3 text-lg font-normal">
-          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={() => signIn("google")} variant={'outline'}>Sign in</Button>
+          <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={async () => await signIn("google")} variant={'outline'}>Sign in</Button>
           </div>
       {/* <div className='w-full bg-white'><UserButton/></div> */}
       {/* <div className="flex text-white items-center gap-x-3 text-lg font-normal">

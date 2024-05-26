@@ -25,7 +25,7 @@ const Page = () => {
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
-    const userPrompt=`Write an advertisement on the topic ${topic} for the product ${prodDesc} which should solve a purpose of ${post} and have a word limit of ${length} words`
+    const userPrompt=`Write an advertisement on the topic ${topic} for the product ${prodDesc} which should solve a purpose of ${post} and have a word limit of ${length} words .`
     const handleSubmit=async(event: React.FormEvent)=>{
         setIsLoading(true)
         setGenerations('')

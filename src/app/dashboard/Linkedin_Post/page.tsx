@@ -13,9 +13,8 @@ import React, { useEffect, useState } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 const Page = () => {
    const {data: session} = useSession()
-      const [isLoading,setIsLoading]=useState<boolean>(false)
+    const [isLoading,setIsLoading]=useState<boolean>(false)
     const [post,setPost]=useState<string>()
-    const [mood,setMood]=useState<string>()
     const [length,setLength]=useState<string>()
     const [topic,setTopic]=useState<string>()
     const [generations,setGenerations]=useState<string>('')
@@ -24,7 +23,7 @@ const Page = () => {
     // console.log(currentDate)
     // console.log(const userEmail= session?.user?.email)
     const userEmail= session?.user?.email
-    const userPrompt=`Generate me a LinkedIn post on a topic called ${topic} that should solve a purpose of ${post} and should be in a ${mood} mood of atleast length of ${length} words.`
+    const userPrompt=`Imagine you are a Social Media Manager tasked with creating a twitter post to launch a new product named OneBuck that has the following description : This website let's user's promote their product for just one dollar on the website and shares them on the company twitter account also . Craft a compelling post that captures attention, creates buzz, and drives engagement among our target audience.Also , use normal and simple english words that normal humans write .`
     // console.log(userEmail)
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{
@@ -32,19 +31,18 @@ const Page = () => {
         setGenerations('')
         event.preventDefault()
         try{
-            const res= await axios.post('https://marketing-7do1.onrender.com/linkedin',{
-                email:userEmail,
+            const res= await axios.post('/api/generatepaid',{
+                // email:userEmail,
                 prompt:userPrompt,
-                title:topic,
-                presentDate:currentDate,
-                type:'LinkedIn',
+                // title:topic,
+                // presentDate:currentDate,
+                // type:'LinkedIn',
             })
             // console.log(res.data)
             // console.log(res.data.response)
             setGenerations(res.data.response)
             setIsLoading(false)
             setPost('')
-            setMood('')
             setLength('')
             setTopic('')
         }catch(err:any){
@@ -80,15 +78,11 @@ const Page = () => {
                 <div className="flex flex-col gap-y-2">
                     <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={post} placeholder="Purpose of post" onChange={(e)=>setPost(e.target.value)} />
                 </div>
-            
-                <div className="flex flex-col gap-y-2">
-                    <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={mood} placeholder="Mood" onChange={(e)=>setMood(e.target.value)} />
-                </div>
 
                 <div className="flex flex-col gap-y-2">
                     <input type="text" aria-required className="p-3 focus:outline-none text-gray-300 rounded-lg bg-black w-full placeholder:text-gray-400" required value={length} placeholder="Length in words" onChange={(e)=>setLength(e.target.value)} />
                 </div>
-                <Button disabled={isLoading || (!post || !mood ||!length ||!topic)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin ml-1"/></>):(<>Submit</>)} </Button>
+                <Button disabled={isLoading || (!post  ||!length ||!topic)} variant={'default'} className="w-full hover:scale-90 duration-200 text-base bg-[#0077b5ff] hover:bg-[#0077b5ff] font-semibold transition-all"> {isLoading?(<>Generating... <Loader2 className="h-4 w-4 animate-spin ml-1"/></>):(<>Submit</>)} </Button>
             </form>
         </div>
         <div className=" w-[80%] lg:ml-[15rem] overflow-x-hidden mt-24 ">
