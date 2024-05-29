@@ -31,11 +31,9 @@ const Navbar = () => {
         </a>
       </div>
       {/* Logo */}
-      <a href="/">
         <div className="bg-gradient-to-r from-fuchsia-500 via-fuchsia-400 to-fuchsia-300 text-transparent bg-clip-text flex md:text-3xl text-5xl lg:pr-24 pb-2 font-extrabold justify-start items-center">
-          promogenie.
+          promogenie
         </div>
-      </a>
       {/* Sign-in/sign-out button and Try free button */}
       <div className="flex text-white items-center gap-x-3 text-lg font-normal">
           <Button className="text-lg rounded-lg text-gray-400 hover:underline bg-inherit hover:bg-inherit hover:text-gray-400" onClick={async () => await signIn("google")} variant={'outline'}>Sign in</Button>
@@ -87,7 +85,7 @@ const Navbar = () => {
       {pathname ==='/dashboard' && (<div className="flex bg-black p-4 z-50 justify-between items-center">
                 {/* <div className='text-white'>Promogenie.</div> */}
                 <div className='text-white'></div>
-        
+
                 <Logout/>
         </div>)}
     </div>

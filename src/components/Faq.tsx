@@ -7,7 +7,7 @@ import {
   } from "@material-tailwind/react";
 const Faq = () => {
     const [open, setOpen] =useState(0);
- 
+
   const handleOpen = (value:any) => setOpen(open === value ? 0 : value);
   return (
     <div id="faq" className="mt-24 bg-black flex flex-col items-center justify-center gap-y-10  bg-grid-gray-100/[0.1] text-white px-10 md:px-24 ">
@@ -19,21 +19,12 @@ const Faq = () => {
       <AccordionHeader className="text-gray-300" placeholder={''} onClick={() => handleOpen(1)}>What is promogenie?</AccordionHeader>
       <AccordionBody>
         <p className="text-base text-gray-300">
-        Promogenie is an AI powered content generation tool which can be used to craft awesome content for your different social media platforms and can save upto 100 hours of hardwork and can also increase your social media reach upto 5x as compared to your normal reach. 
+        Promogenie is an AI powered content generation tool which can be used to craft awesome content for your different social media platforms and can save upto 100 hours of hardwork and can also increase your social media reach upto 5x as compared to your normal reach.
         </p>
       </AccordionBody>
     </Accordion>
 
-    <Accordion placeholder={''} open={open === 2}>
-      <AccordionHeader className="text-gray-300" placeholder={''} onClick={() => handleOpen(2)}>
-        Is promogenie free to use?
-      </AccordionHeader>
-      <AccordionBody>
-      <p className="text-base text-gray-300">
-        Yes, we are currently serving users at a free tier where a user can generate unlimited content and can access all premium social media templates.
-        </p>
-      </AccordionBody>
-    </Accordion>
+
 
     <Accordion placeholder={''} open={open === 3}>
       <AccordionHeader className="text-gray-300" placeholder={''} onClick={() => handleOpen(3)}>
@@ -41,7 +32,7 @@ const Faq = () => {
       </AccordionHeader>
       <AccordionBody>
       <p className="text-base text-gray-300">
-          Promogenie generate content samples based on the user&apos;s inputs, it also allows customisation with several different filters to generate the most optimised results. 
+          Promogenie generate content samples based on the user&apos;s inputs, it also allows customisation with several different filters to generate the most optimised results.
         </p>
       </AccordionBody>
     </Accordion>
@@ -67,7 +58,7 @@ const Faq = () => {
         </p>
       </AccordionBody>
     </Accordion>
-    
+
     <Accordion placeholder={''} open={open === 6}>
       <AccordionHeader className="text-gray-300" placeholder={''} onClick={() => handleOpen(6)}>
         Will there be any new features or innovations in future?

@@ -24,16 +24,12 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>  
+      </head>
        <body className={inter.className}>
         <Providers>
-          <IsPremiumContextProvider>
-            <ProModalProvider/> 
-            
+            <ProModalProvider/>
           {children}
-         
            <Analytics />
-          </IsPremiumContextProvider>
         </Providers>
       </body>
     </html>

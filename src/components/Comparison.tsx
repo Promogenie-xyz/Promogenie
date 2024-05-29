@@ -4,12 +4,6 @@ import { ImCross } from "react-icons/im";
 const Comparison = () => {
   const data=[
     {
-      id:1,
-      label:'Currently at a Free plan',
-      promIcon:<FaCheck className="w-4 h-4 md:w-8 md:h-8"/>,
-      compIcon:<ImCross className="w-4 h-4 md:w-8 md:h-8"/>
-    },
-    {
       id:2,
       label:'Priority customer support',
       promIcon:<FaCheck className="w-4 h-4 md:w-8 md:h-8"/>,

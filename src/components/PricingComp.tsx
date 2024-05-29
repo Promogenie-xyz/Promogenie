@@ -18,7 +18,7 @@ const Pricing = () => {
   // const handleClick = () => {
   //   window.location.replace(Yearly)
   // }
-  
+
   // const handleClick2 = () => {
   //   window.location.replace(Monthly)
   // }
@@ -37,23 +37,11 @@ const Pricing = () => {
   // },[session])
   // console.log(userProfile)
   const router=useRouter()
-  
+
     const premium = usePremiumContext()
     // console.log(premium)
   const data=[
-    {
-        id:1,
-        heading:'BEGINNER FRIENDLY',
-        priceCategory:'Default',
-        cost:'Free',
-        features:[
-            'Perfect for beginners.',
-            '10 Free generations.',
-            'Limited access to templates.'
-        ],
-        btnBeforeSession:'Sign In',
-        btnAfterSession:'Explore more',
-    },
+
     {
         id:2,
         heading:'MOST POPULAR',
@@ -66,7 +54,7 @@ const Pricing = () => {
         ],
         btnBeforeSession:'Sign In',
         btnAfterSession:'Explore more',
-  
+
     },
     {
         id:3,
@@ -79,7 +67,7 @@ const Pricing = () => {
             'Unlimited access to templates.',
         ],
         btnBeforeSession:'Sign In',
-        btnAfterSession:'Explore more',  
+        btnAfterSession:'Explore more',
     },
 
 ]
@@ -106,7 +94,7 @@ const Pricing = () => {
           <span className={`mt-5 font-bold text-5xl ${item.cost==='Free'?'':'line-through '} `}>{item.cost}</span>
           <span className={`font-bold text-2xl ml-1 capitalize  ${item.cost==='Free'?'hidden':''}`}>Free</span>
         </span>
-        
+
         {item.features.map((ft,index)=>(
       <div key={index} className="mt-7 flex flex-col justify-center items-start space-y-2.5 text-sm">
             <div className="flex gap-x-2 justify-start items-center">
@@ -117,12 +105,12 @@ const Pricing = () => {
             </div>
     </div>
         ))}
-       
-      
+
+
       </div>
       </div>
     ))}
-  
+
 
 
 

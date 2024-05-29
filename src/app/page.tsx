@@ -20,8 +20,7 @@ export default async function Home() {
  if(session) {
      redirect('/dashboard')
   }
-  console.log(session)
-  
+
   return (
     <div className="bg-black pb-4 bg-grid-gray-100/[0.1] flex flex-col justify-center">
       <Navbar/>
@@ -29,13 +28,13 @@ export default async function Home() {
         <div className=" absolute pointer-events-none inset-0 z-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
           <Headercomp/>
       </div>
-      <Problem/>
+      <Problem />
       <Features/>
       <Comparison/>
       <Pricing/>
       <Testimonials/>
       <Faq/>
-      {/* <Footer/> */}
+       <Footer/>
     </div>
   );
 }
