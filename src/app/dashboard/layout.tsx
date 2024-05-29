@@ -1,8 +1,9 @@
+
 import Navbar from "@/components/Navbar"
 import Sidebar from "@/components/Sidebar"
+import authOptions from "@/lib/authOptions"
 import supabaseClient from "@/utils/supabase-connect"
 import { getServerSession } from "next-auth"
-import { getSession, useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 
 const DashboardLayout=async({
@@ -10,8 +11,8 @@ const DashboardLayout=async({
   }: {
     children: React.ReactNode
   }) =>{
-  const session = useSession()
-  const email = session.data?.user?.email
+  const session = await getServerSession(authOptions)
+  const email = session?.user?.email
   const data = await supabaseClient.from("users").select("paid").eq("email",email)
 
   if (data !== null && data.data !== null && data.data[0].paid === true) {
