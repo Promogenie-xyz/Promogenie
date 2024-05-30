@@ -15,7 +15,7 @@ const DashboardLayout=async({
   const email = session?.user?.email
   const data = await supabaseClient.from("users").select("paid").eq("email",email)
 
-  if (data !== null && data.data !== null && data.data[0].paid === true) {
+  // if (data !== null && data.data !== null && data.data[0].paid === true) {
     return(
         <div className="relative bg-black  bg-grid-gray-100/[0.1] h-full pb-10 ">
             <div className="z-50">
@@ -30,8 +30,8 @@ const DashboardLayout=async({
             </main>
         </div>
     )
-  } else {
-    redirect("/")
-  }
+  // } else {
+  //   redirect("/")
+  // }
   }
 export default DashboardLayout

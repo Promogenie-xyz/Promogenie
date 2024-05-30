@@ -1,4 +1,5 @@
 'use client'
+
 import { DataStore, myStore } from "@/app/store/MyStore"
 import GenerationComp from "@/components/GenerationComp"
 import Heading from "@/components/Heading"
@@ -23,7 +24,7 @@ const Page = () => {
     // console.log(currentDate)
     // console.log(const userEmail= session?.user?.email)
     const userEmail= session?.user?.email
-    const userPrompt=`Imagine you are a Social Media Manager tasked with creating a twitter post to launch a new product named OneBuck that has the following description : This website let's user's promote their product for just one dollar on the website and shares them on the company twitter account also . Craft a compelling post that captures attention, creates buzz, and drives engagement among our target audience.Also , use normal and simple english words that normal humans write .`
+    const userPrompt=`Imagine you are a Social Media Manager tasked with creating a LinkedIn post for the topic : ${topic} that has the following purpose : ${post} . Craft a compelling post that captures attention, creates buzz, and drives engagement among audience.Also , use normal and simple english words that normal humans write .Moreover , the length of the post should not be more than ${length}.`
     // console.log(userEmail)
     // console.log(userEmail,userPrompt)
     const handleSubmit=async(event: React.FormEvent)=>{
